@@ -27,6 +27,9 @@ tags:
   - name: Admin Dashboard > Account Office
   - name: Admin Dashboard > Company
   - name: AO Dashboard
+  - name: AO Dashboard > Auth
+  - name: AO Dashboard > My office
+  - name: AO Dashboard > Profile
 paths:
   /api/admin/login:
     post:
@@ -49,7 +52,7 @@ paths:
   /api/admin/refresh:
     post:
       tags:
-        - Admin Dashboard > Auth
+        - AO Dashboard > Auth
       summary: Refresh
       requestBody:
         content:
@@ -138,7 +141,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /admin/accounting-office/{slug}/admin:
+  /api/admin/accounting-office/{slug}/admin:
     put:
       tags:
         - Admin Dashboard > Account Office
@@ -372,6 +375,141 @@ paths:
             type: integer
           required: true
           example: '11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/login:
+    post:
+      tags:
+        - AO Dashboard > Auth
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: testOffice@gmail.com
+                password: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/my-accounting-office:
+    get:
+      tags:
+        - AO Dashboard > My office
+      summary: My office
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - AO Dashboard > My office
+      summary: Update office
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                slug: office-second
+                name: office second up
+                email: office_second@mail.com
+                short_name: office
+                tax_id: 12356
+                regon: 13456
+                bdo: 45677
+                pkd: pkd
+                krs: krs
+                www: www
+                is_tax_adviser: 1
+                is_current_review: 0
+                nr_mf: abc
+                phone_number: '123412'
+                addresses:
+                  country: Nepal
+                  city: Kathmandu
+                  zip: '9800'
+                  post: p1
+                  street: street 1
+                  district: district 1
+                  county: county 1
+                  house_number: h 123
+                  no_of_premises: pr 4
+                  voivodeship: voivo 2
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profiles:
+    get:
+      tags:
+        - AO Dashboard > Profile
+      summary: List Profiles
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profile:
+    post:
+      tags:
+        - AO Dashboard > Profile
+      summary: Create Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_office_id: '1'
+                name: sam
+                surname: billing
+                title: mr
+                accoutant_email: sam.billing@mail.com
+                phone: '+1234'
+                experience: describe the experiences
+                city: ktm
+                postal_code: '44600'
+                list_branch_supported: abc
+                is_spzoo: true
+                is_dg: false
+                is_foundations: true
+                is_cooperatives: false
+                br_mf: abc
+                is_tax_advisor: true
+                is_fund_reviewer: false
+                keywords: abcs
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

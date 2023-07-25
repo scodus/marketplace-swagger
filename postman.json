@@ -195,11 +195,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/admin/accounting-office/:slug/admin",
+									"raw": "{{url}}/api/admin/accounting-office/:slug/admin",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"admin",
 										"accounting-office",
 										":slug",
@@ -3181,7 +3182,239 @@
 		},
 		{
 			"name": "AO Dashboard",
-			"item": []
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var body = pm.response.json()",
+											"pm.environment.set(\"account_token\", body.data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"testOffice@gmail.com\",\n    \"password\":\"P@ssw0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/accounting/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\":\"def50200bfcb5b34199e56a98562af8af9251646fa6535e60bf8949543f4695553e1913754f79965ab14852328dcd8146505e40f45735ac25a582685edcb1dca493daf4a297d407c48efc44ec9587a39f615aa613ebd1b075f9deb81ae4445d46c38ccaa9a2fe6d35eeb2540f33b727db6317cab927fc217e0823bf8187034240939bfa90ac404deb0ae38e7de3b21b80c9741d40ab0046e1615c29b492e6bdd6acf5a04b8ad9dd9462cc5fd1ce32e87238a770fb4c63b3d5ad1c1cd88c3216973ab69b23704e56969408572ad4075dd5df0623f68dc9ac7a4cefbc9993f8282f2190307bb4c00e69ac8da54f21d2913b053684d1489f51d25f842773cab8a46760ee3a020fd53f33fab7d1db96b84d18b3f7311510096324973ffcd07e519cfd4ad8a0786e307a49591ab6c6483bcafd3fd9849c75302b1026a1f56c862fa9c6811ae00cec22859f59728cce482c1bab9dcf7f4f57a3cb52819c80be9bf0c7d1147af38\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/refresh",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "My office",
+					"item": [
+						{
+							"name": "My office",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{account_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/accounting/my-accounting-office",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"my-accounting-office"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update office",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{account_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"slug\":\"office-second\",\n    \"name\":\"office second up\",\n    \"email\":\"office_second@mail.com\",\n    \"short_name\":\"office\",\n    \"tax_id\":12356,\n    \"regon\":13456,\n    \"bdo\":45677,\n    \"pkd\":\"pkd\",\n    \"krs\":\"krs\",\n    \"www\":\"www\",\n    \"is_tax_adviser\":1,\n    \"is_current_review\":0,\n    \"nr_mf\":\"abc\",\n    \"phone_number\":\"123412\",\n    \"addresses\":{\n        \"country\":\"Nepal\",\n        \"city\":\"Kathmandu\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/accounting/my-accounting-office",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"my-accounting-office"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "List Profiles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{account_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/accounting/profiles?page=1&limit=10&name=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"profiles"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "name",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{account_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accounting_office_id\": \"1\",\n    \"name\": \"sam\",\n    \"surname\": \"billing\",\n    \"title\": \"mr\",\n    \"accoutant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/accounting/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"accounting",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	]
 }
