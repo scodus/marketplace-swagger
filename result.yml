@@ -26,6 +26,7 @@ tags:
   - name: Admin Dashboard > Auth
   - name: Admin Dashboard > Account Office
   - name: Admin Dashboard > Company
+  - name: Admin Dashboard > Users
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -52,7 +53,7 @@ paths:
   /api/admin/refresh:
     post:
       tags:
-        - AO Dashboard > Auth
+        - Admin Dashboard > Auth
       summary: Refresh
       requestBody:
         content:
@@ -62,6 +63,42 @@ paths:
               example:
                 refresh_token: >-
                   def50200bfcb5b34199e56a98562af8af9251646fa6535e60bf8949543f4695553e1913754f79965ab14852328dcd8146505e40f45735ac25a582685edcb1dca493daf4a297d407c48efc44ec9587a39f615aa613ebd1b075f9deb81ae4445d46c38ccaa9a2fe6d35eeb2540f33b727db6317cab927fc217e0823bf8187034240939bfa90ac404deb0ae38e7de3b21b80c9741d40ab0046e1615c29b492e6bdd6acf5a04b8ad9dd9462cc5fd1ce32e87238a770fb4c63b3d5ad1c1cd88c3216973ab69b23704e56969408572ad4075dd5df0623f68dc9ac7a4cefbc9993f8282f2190307bb4c00e69ac8da54f21d2913b053684d1489f51d25f842773cab8a46760ee3a020fd53f33fab7d1db96b84d18b3f7311510096324973ffcd07e519cfd4ad8a0786e307a49591ab6c6483bcafd3fd9849c75302b1026a1f56c862fa9c6811ae00cec22859f59728cce482c1bab9dcf7f4f57a3cb52819c80be9bf0c7d1147af38
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/password-reset:
+    post:
+      tags:
+        - Admin Dashboard > Auth
+      summary: Forgot Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: email
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/password-reset/change:
+    post:
+      tags:
+        - Admin Dashboard > Auth
+      summary: Reset Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                new_password: P@ssw0rd
+                new_password_confirmation: P@ssw0rd
+                token: token
       responses:
         '200':
           description: Successful response
@@ -380,6 +417,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/users:
+    get:
+      tags:
+        - Admin Dashboard > Users
+      summary: List Users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user:
+    post:
+      tags:
+        - Admin Dashboard > Users
+      summary: Create User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_name: abc
+                user_email: neyiviv968@sparkroi.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{user_id}:
+    delete:
+      tags:
+        - Admin Dashboard > Users
+      summary: Create User Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/login:
     post:
       tags:
@@ -393,6 +481,60 @@ paths:
               example:
                 email: testOffice@gmail.com
                 password: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/refresh:
+    post:
+      tags:
+        - AO Dashboard > Auth
+      summary: Refresh
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                refresh_token: >-
+                  def50200bfcb5b34199e56a98562af8af9251646fa6535e60bf8949543f4695553e1913754f79965ab14852328dcd8146505e40f45735ac25a582685edcb1dca493daf4a297d407c48efc44ec9587a39f615aa613ebd1b075f9deb81ae4445d46c38ccaa9a2fe6d35eeb2540f33b727db6317cab927fc217e0823bf8187034240939bfa90ac404deb0ae38e7de3b21b80c9741d40ab0046e1615c29b492e6bdd6acf5a04b8ad9dd9462cc5fd1ce32e87238a770fb4c63b3d5ad1c1cd88c3216973ab69b23704e56969408572ad4075dd5df0623f68dc9ac7a4cefbc9993f8282f2190307bb4c00e69ac8da54f21d2913b053684d1489f51d25f842773cab8a46760ee3a020fd53f33fab7d1db96b84d18b3f7311510096324973ffcd07e519cfd4ad8a0786e307a49591ab6c6483bcafd3fd9849c75302b1026a1f56c862fa9c6811ae00cec22859f59728cce482c1bab9dcf7f4f57a3cb52819c80be9bf0c7d1147af38
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/password-reset:
+    post:
+      tags:
+        - AO Dashboard > Auth
+      summary: Forgot Password Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: email
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/password-reset/change:
+    post:
+      tags:
+        - AO Dashboard > Auth
+      summary: Reset Password Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                new_password: P@ssw0rd
+                new_password_confirmation: P@ssw0rd
+                token: token
       responses:
         '200':
           description: Successful response
