@@ -30,7 +30,7 @@ tags:
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
-  - name: AO Dashboard > Profile
+  - name: AO Dashboard > Accountatnt Profile
 paths:
   /api/admin/login:
     post:
@@ -597,7 +597,7 @@ paths:
   /api/accounting/profiles:
     get:
       tags:
-        - AO Dashboard > Profile
+        - AO Dashboard > Accountatnt Profile
       summary: List Profiles
       security:
         - bearerAuth: []
@@ -624,7 +624,7 @@ paths:
   /api/accounting/profile:
     post:
       tags:
-        - AO Dashboard > Profile
+        - AO Dashboard > Accountatnt Profile
       summary: Create Profile
       requestBody:
         content:
@@ -636,7 +636,7 @@ paths:
                 name: sam
                 surname: billing
                 title: mr
-                accoutant_email: sam.billing@mail.com
+                accountant_email: sam.billing@mail.com
                 phone: '+1234'
                 experience: describe the experiences
                 city: ktm
@@ -660,7 +660,7 @@ paths:
   /api/accounting/profile/{slug}:
     put:
       tags:
-        - AO Dashboard > Profile
+        - AO Dashboard > Accountatnt Profile
       summary: Update Profile
       requestBody:
         content:
@@ -671,7 +671,7 @@ paths:
                 name: Sam
                 surname: Billings
                 title: mr
-                accoutant_email: sam.billing@mail.com
+                accountant_email: sam.billing@mail.com
                 phone: '+1234'
                 experience: describe the experiences
                 city: ktm
@@ -702,7 +702,7 @@ paths:
   /api/accounting/profile/{slug}/avatar:
     post:
       tags:
-        - AO Dashboard > Profile
+        - AO Dashboard > Accountatnt Profile
       summary: Update Avatar
       requestBody:
         content:

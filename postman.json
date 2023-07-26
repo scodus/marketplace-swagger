@@ -3412,7 +3412,7 @@
           ]
         },
         {
-          "name": "Profile",
+          "name": "Accountatnt Profile",
           "item": [
             {
               "name": "List Profiles",
@@ -3468,7 +3468,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"accounting_office_id\": \"1\",\n    \"name\": \"sam\",\n    \"surname\": \"billing\",\n    \"title\": \"mr\",\n    \"accoutant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
+                  "raw": "{\n    \"accounting_office_id\": \"1\",\n    \"name\": \"sam\",\n    \"surname\": \"billing\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3500,7 +3500,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accoutant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
+                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
