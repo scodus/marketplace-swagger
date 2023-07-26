@@ -657,3 +657,76 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/profile/{slug}:
+    put:
+      tags:
+        - AO Dashboard > Profile
+      summary: Update Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Sam
+                surname: Billings
+                title: mr
+                accoutant_email: sam.billing@mail.com
+                phone: '+1234'
+                experience: describe the experiences
+                city: ktm
+                postal_code: '44600'
+                list_branch_supported: abc
+                is_spzoo: true
+                is_dg: false
+                is_foundations: true
+                is_cooperatives: false
+                br_mf: abc
+                is_tax_advisor: true
+                is_fund_reviewer: false
+                keywords: abcs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profile/{slug}/avatar:
+    post:
+      tags:
+        - AO Dashboard > Profile
+      summary: Update Avatar
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: put
+                avatar:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

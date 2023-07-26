@@ -3482,6 +3482,88 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Update Profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accoutant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profile", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Avatar",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "_method",
+                      "value": "put",
+                      "type": "text"
+                    },
+                    {
+                      "key": "avatar",
+                      "type": "file",
+                      "src": "/Users/bijay/Pictures/Web Uploads/about.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile/:slug/avatar",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profile", ":slug", "avatar"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         }
