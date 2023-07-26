@@ -205,6 +205,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/profiles:
+    get:
+      tags:
+        - Admin Dashboard > Account Office
+      summary: Accountant Profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: accounting_office_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile/{slug}:
+    get:
+      tags:
+        - Admin Dashboard > Account Office
+      summary: Accountant Profile Detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/company:
     get:
       tags:

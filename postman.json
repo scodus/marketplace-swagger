@@ -233,6 +233,76 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Accountant Profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profiles?page=1&limit=1&accounting_office_id=1&name=",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profiles"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "accounting_office_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "name",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Accountant Profile Detail",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profile/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profile", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
