@@ -31,6 +31,7 @@ tags:
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
   - name: AO Dashboard > Accountatnt Profile
+  - name: AO Dashboard > Users
 paths:
   /api/admin/login:
     post:
@@ -672,43 +673,25 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/accounting/profile:
-    post:
+  /api/accounting/profile/{slug}:
+    get:
       tags:
         - AO Dashboard > Accountatnt Profile
-      summary: Create Profile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                accounting_office_id: '1'
-                name: sam
-                surname: billing
-                title: mr
-                accountant_email: sam.billing@mail.com
-                phone: '+1234'
-                experience: describe the experiences
-                city: ktm
-                postal_code: '44600'
-                list_branch_supported: abc
-                is_spzoo: true
-                is_dg: false
-                is_foundations: true
-                is_cooperatives: false
-                br_mf: abc
-                is_tax_advisor: true
-                is_fund_reviewer: false
-                keywords: abcs
+      summary: Profile Detail
       security:
         - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/accounting/profile/{slug}:
     put:
       tags:
         - AO Dashboard > Accountatnt Profile
@@ -750,6 +733,42 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/profile:
+    post:
+      tags:
+        - AO Dashboard > Accountatnt Profile
+      summary: Create Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_office_id: '1'
+                name: sam
+                surname: billing
+                title: mr
+                accountant_email: sam.billing@mail.com
+                phone: '+1234'
+                experience: describe the experiences
+                city: ktm
+                postal_code: '44600'
+                list_branch_supported: abc
+                is_spzoo: true
+                is_dg: false
+                is_foundations: true
+                is_cooperatives: false
+                br_mf: abc
+                is_tax_advisor: true
+                is_fund_reviewer: false
+                keywords: abcs
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/profile/{slug}/avatar:
     post:
       tags:
@@ -776,6 +795,57 @@ paths:
             type: string
           required: true
           example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/users:
+    get:
+      tags:
+        - AO Dashboard > Users
+      summary: List Users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/user:
+    post:
+      tags:
+        - AO Dashboard > Users
+      summary: Create User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_name: abc
+                user_email: radom.user@sparkroi.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/user/{user_id}:
+    delete:
+      tags:
+        - AO Dashboard > Users
+      summary: Create User Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '7'
       responses:
         '200':
           description: Successful response
