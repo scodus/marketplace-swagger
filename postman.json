@@ -235,7 +235,7 @@
               "response": []
             },
             {
-              "name": "Accountant Profile",
+              "name": "List Accountant Profile",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -2864,9 +2864,9 @@
                   }
                 },
                 "url": {
-                  "raw": "{{url}}/admin/company/:slug/change-active",
+                  "raw": "{{url}}/api/admin/company/:slug/change-status",
                   "host": ["{{url}}"],
-                  "path": ["admin", "company", ":slug", "change-active"],
+                  "path": ["api", "admin", "company", ":slug", "change-status"],
                   "variable": [
                     {
                       "key": "slug",
@@ -3214,6 +3214,56 @@
                     {
                       "key": "company_id",
                       "value": "11"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Company Stage Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"type\":\"process_status\",\n    \"value\":\"abc\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company/:slug/change-stage-status",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company",
+                    ":slug",
+                    "change-stage-status"
+                  ],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "xyz"
                     }
                   ]
                 }
@@ -3754,6 +3804,24 @@
               "response": []
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Public",
+      "item": [
+        {
+          "name": "Company Stage Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/v1/company-status",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "company-status"]
+            }
+          },
+          "response": []
         }
       ]
     }
