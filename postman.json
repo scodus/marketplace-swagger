@@ -3243,7 +3243,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"type\":\"process_status\",\n    \"value\":\"abc\"\n}",
+                  "raw": "{\n    \"type\":\"process_status\",\n    \"value\":\"to_do\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3426,7 +3426,7 @@
               "response": []
             },
             {
-              "name": "Forgot Password Copy",
+              "name": "Forgot Password",
               "request": {
                 "method": "POST",
                 "header": [],
@@ -3448,7 +3448,7 @@
               "response": []
             },
             {
-              "name": "Reset Password Copy",
+              "name": "Reset Password",
               "request": {
                 "method": "POST",
                 "header": [],
@@ -3808,6 +3808,116 @@
       ]
     },
     {
+      "name": "Marketplace",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "var body = pm.response.json()",
+                      "pm.environment.set(\"account_token\", body.data.token);"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\":\"testuser@mail.com\",\n    \"password\":\"P@ssw0rd\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/login",
+                  "host": ["{{url}}"],
+                  "path": ["api", "v1", "login"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Refresh",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"refresh_token\":\"def50200bfcb5b34199e56a98562af8af9251646fa6535e60bf8949543f4695553e1913754f79965ab14852328dcd8146505e40f45735ac25a582685edcb1dca493daf4a297d407c48efc44ec9587a39f615aa613ebd1b075f9deb81ae4445d46c38ccaa9a2fe6d35eeb2540f33b727db6317cab927fc217e0823bf8187034240939bfa90ac404deb0ae38e7de3b21b80c9741d40ab0046e1615c29b492e6bdd6acf5a04b8ad9dd9462cc5fd1ce32e87238a770fb4c63b3d5ad1c1cd88c3216973ab69b23704e56969408572ad4075dd5df0623f68dc9ac7a4cefbc9993f8282f2190307bb4c00e69ac8da54f21d2913b053684d1489f51d25f842773cab8a46760ee3a020fd53f33fab7d1db96b84d18b3f7311510096324973ffcd07e519cfd4ad8a0786e307a49591ab6c6483bcafd3fd9849c75302b1026a1f56c862fa9c6811ae00cec22859f59728cce482c1bab9dcf7f4f57a3cb52819c80be9bf0c7d1147af38\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/refresh",
+                  "host": ["{{url}}"],
+                  "path": ["api", "v1", "refresh"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Forgot Password",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\":\"email\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/password-reset",
+                  "host": ["{{url}}"],
+                  "path": ["api", "v1", "password-reset"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Reset Password",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"token\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/password-reset/change",
+                  "host": ["{{url}}"],
+                  "path": ["api", "v1", "password-reset", "change"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Public",
       "item": [
         {
@@ -3819,6 +3929,29 @@
               "raw": "{{url}}/api/v1/company-status",
               "host": ["{{url}}"],
               "path": ["api", "v1", "company-status"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Profiles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/v1/profiles?page=1&limit=10",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "profiles"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
             }
           },
           "response": []
