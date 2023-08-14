@@ -3360,6 +3360,260 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Parameter",
+          "item": [
+            {
+              "name": "List Parameters",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/parameters",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameters"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Parameters",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"Consulation hours\",\n    \"type\":\"addon\",\n    \"description\":\"abc def\",\n    \"has_quantity\":1,\n    \"unit\":\"hours\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Parameter",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"Consulation hours\",\n    \"description\":\"abc aaa\",\n    \"has_quantity\":1,\n    \"unit\":\"hours\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "consulation-hours"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Parameter",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "consulation-hours"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Packages",
+          "item": [
+            {
+              "name": "List Packages",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/packages",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "packages"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Package",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"Premium\",\n    \"description\":\"abc def\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/package",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "package"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Pacakge",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"Platinum\",\n    \"description\":\"platinum package\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/package/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "package", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "premium"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Single Package",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/package/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "package", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "platinum"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -3876,7 +4130,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"email\"\n}",
+                  "raw": "{\n    \"email\":\"testuser@mail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"

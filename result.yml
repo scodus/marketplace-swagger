@@ -27,6 +27,8 @@ tags:
   - name: Admin Dashboard > Account Office
   - name: Admin Dashboard > Company
   - name: Admin Dashboard > Users
+  - name: Admin Dashboard > Parameter
+  - name: Admin Dashboard > Packages
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -555,6 +557,165 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/parameters:
+    get:
+      tags:
+        - Admin Dashboard > Parameter
+      summary: List Parameters
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/parameter:
+    post:
+      tags:
+        - Admin Dashboard > Parameter
+      summary: Create Parameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Consulation hours
+                type: addon
+                description: abc def
+                has_quantity: 1
+                unit: hours
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/parameter/{slug}:
+    put:
+      tags:
+        - Admin Dashboard > Parameter
+      summary: Update Parameter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Consulation hours
+                description: abc aaa
+                has_quantity: 1
+                unit: hours
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: consulation-hours
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin Dashboard > Parameter
+      summary: Delete Parameter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: consulation-hours
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/packages:
+    get:
+      tags:
+        - Admin Dashboard > Packages
+      summary: List Packages
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/package:
+    post:
+      tags:
+        - Admin Dashboard > Packages
+      summary: Create Package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Premium
+                description: abc def
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/package/{slug}:
+    put:
+      tags:
+        - Admin Dashboard > Packages
+      summary: Update Pacakge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Platinum
+                description: platinum package
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: premium
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin Dashboard > Packages
+      summary: Single Package
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: platinum
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/login:
     post:
       tags:
@@ -933,7 +1094,7 @@ paths:
             schema:
               type: object
               example:
-                email: email
+                email: testuser@mail.com
       responses:
         '200':
           description: Successful response
