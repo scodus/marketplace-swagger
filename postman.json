@@ -3436,7 +3436,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Consulation hours\",\n    \"description\":\"abc aaa\",\n    \"has_quantity\":1,\n    \"unit\":\"hours\"\n}",
+                  "raw": "{\n    \"title\":\"New Parameter\",\n    \"description\":\"abc aaass\",\n    \"has_quantity\":1,\n    \"unit\":\"hours\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3450,7 +3450,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "consulation-hours"
+                      "value": "my-consulation-hours"
                     }
                   ]
                 }
@@ -3603,6 +3603,44 @@
                   "raw": "{{url}}/api/admin/package/:slug",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "package", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "platinum"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Package Price",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"package_price\":100,\n    \"basic_parameters\":[\n        1,2,3\n    ],\n    \"addon_parameters\":[\n        {\n            \"parameter_id\":\"7\",\n            \"value\":2,\n            \"price\":10\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/package-price/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "package-price", ":slug"],
                   "variable": [
                     {
                       "key": "slug",
@@ -3967,6 +4005,50 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Assign Package",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"package_ids\":[2,3]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile/:slug/assign-package",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "profile",
+                    ":slug",
+                    "assign-package"
+                  ],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -4051,6 +4133,63 @@
                     {
                       "key": "user_id",
                       "value": "7"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Package",
+          "item": [
+            {
+              "name": "List Package",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/packages",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "packages"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Single Package",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/package/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "package", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "platinum"
                     }
                   ]
                 }
