@@ -29,6 +29,7 @@ tags:
   - name: Admin Dashboard > Users
   - name: Admin Dashboard > Parameter
   - name: Admin Dashboard > Packages
+  - name: Admin Dashboard > Profiles
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -105,7 +106,7 @@ paths:
               example:
                 new_password: P@ssw0rd
                 new_password_confirmation: P@ssw0rd
-                token: token
+                token: Cr9kGdy17HPpiTJnSzh8
       responses:
         '200':
           description: Successful response
@@ -212,57 +213,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/profiles:
-    get:
-      tags:
-        - Admin Dashboard > Account Office
-      summary: List Accountant Profile
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: accounting_office_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: name
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/admin/profile/{slug}:
-    get:
-      tags:
-        - Admin Dashboard > Account Office
-      summary: Accountant Profile Detail
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: sam-billings
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/admin/company:
     get:
       tags:
@@ -276,25 +226,33 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: sort_key
-          in: query
-          schema:
-            type: string
-          example: name
-        - name: sort_order
-          in: query
-          schema:
-            type: string
-          example: desc
         - name: limit
           in: query
           schema:
-            type: string
-        - name: status
+            type: integer
+          example: '10'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: name
           in: query
           schema:
             type: string
-          description: 'values: active, inactive'
+        - name: onboarding_status
+          in: query
+          schema:
+            type: string
+          example: new
+        - name: process_status
+          in: query
+          schema:
+            type: string
+        - name: handover_status
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -530,8 +488,9 @@ paths:
             schema:
               type: object
               example:
-                user_name: abc
-                user_email: neyiviv968@sparkroi.com
+                user_name: sam sith
+                user_email: gibag77173@cdeter.com
+                role: support
       security:
         - bearerAuth: []
       responses:
@@ -543,7 +502,7 @@ paths:
     delete:
       tags:
         - Admin Dashboard > Users
-      summary: Create User Copy
+      summary: Remove User
       security:
         - bearerAuth: []
       parameters:
@@ -766,6 +725,56 @@ paths:
             type: string
           required: true
           example: platinum
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profiles:
+    get:
+      tags:
+        - Admin Dashboard > Profiles
+      summary: List Accountant Profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: accounting_office_id
+          in: query
+          schema:
+            type: string
+        - name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile/{slug}:
+    get:
+      tags:
+        - Admin Dashboard > Profiles
+      summary: Accountant Profile Detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
       responses:
         '200':
           description: Successful response

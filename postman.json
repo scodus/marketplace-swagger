@@ -97,7 +97,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"token\"\n}",
+                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"Cr9kGdy17HPpiTJnSzh8\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -228,76 +228,6 @@
                     {
                       "key": "slug",
                       "value": "office-second"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "List Accountant Profile",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{url}}/api/admin/profiles?page=1&limit=1&accounting_office_id=1&name=",
-                  "host": ["{{url}}"],
-                  "path": ["api", "admin", "profiles"],
-                  "query": [
-                    {
-                      "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "1"
-                    },
-                    {
-                      "key": "accounting_office_id",
-                      "value": "1"
-                    },
-                    {
-                      "key": "name",
-                      "value": ""
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Accountant Profile Detail",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{admin_token}}",
-                      "type": "string"
-                    }
-                  ]
-                },
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{url}}/api/admin/profile/:slug",
-                  "host": ["{{url}}"],
-                  "path": ["api", "admin", "profile", ":slug"],
-                  "variable": [
-                    {
-                      "key": "slug",
-                      "value": "sam-billings"
                     }
                   ]
                 }
@@ -2716,26 +2646,33 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?sort_key=name&sort_order=desc&limit=&status=",
+                  "raw": "{{url}}/api/admin/company?limit=10&page=1&name=&onboarding_status=new&process_status&handover_status",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
                     {
-                      "key": "sort_key",
-                      "value": "name"
-                    },
-                    {
-                      "key": "sort_order",
-                      "value": "desc"
-                    },
-                    {
                       "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "name",
                       "value": ""
                     },
                     {
-                      "key": "status",
-                      "value": "",
-                      "description": "values: active, inactive"
+                      "key": "onboarding_status",
+                      "value": "new"
+                    },
+                    {
+                      "key": "process_status",
+                      "value": null
+                    },
+                    {
+                      "key": "handover_status",
+                      "value": null
                     }
                   ]
                 }
@@ -3315,7 +3252,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"neyiviv968@sparkroi.com\"\n}",
+                  "raw": "{\n    \"user_name\": \"sam sith\",\n    \"user_email\": \"gibag77173@cdeter.com\",\n    \"role\": \"support\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3331,7 +3268,7 @@
               "response": []
             },
             {
-              "name": "Create User Copy",
+              "name": "Remove User",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -3645,6 +3582,81 @@
                     {
                       "key": "slug",
                       "value": "platinum"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Profiles",
+          "item": [
+            {
+              "name": "List Accountant Profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profiles?page=1&limit=1&accounting_office_id=&name=",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profiles"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "accounting_office_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "name",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Accountant Profile Detail",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profile/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profile", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
                     }
                   ]
                 }
