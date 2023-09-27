@@ -3404,7 +3404,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Consulation hours\",\n    \"type\":\"addon\",\n    \"description\":\"abc def\",\n    \"has_quantity\":1,\n    \"unit\":\"hours\"\n}",
+                  "raw": "{\n    \"title\":\"No of documents\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3436,7 +3436,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"New Parameter\",\n    \"description\":\"abc aaass\",\n    \"has_quantity\":1,\n    \"unit\":\"hours\"\n}",
+                  "raw": "{\n    \"title\": \"Consulation hours\",\n    \"code\": \"ABC122\",\n    \"description\": \"abc def\",\n    \"has_quantity\": 1,\n    \"unit\": \"hours\",\n    \"price_level_1\": 50,\n    \"price_level_2\": 55,\n    \"price_level_3\": 60\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3450,7 +3450,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "my-consulation-hours"
+                      "value": "consulation-hours"
                     }
                   ]
                 }
@@ -3531,7 +3531,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Premium\",\n    \"description\":\"abc def\"\n}",
+                  "raw": "{\n    \"title\":\"Basic\",\n    \"description\":\"abc def\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"price_list_level\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3563,7 +3563,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Platinum\",\n    \"description\":\"platinum package\"\n}",
+                  "raw": "{\n    \"title\":\"Basic\",\n    \"description\":\"abc def\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"price_list_level\":1,\n    \"upgrade_version\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3577,7 +3577,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "premium"
+                      "value": "basic"
                     }
                   ]
                 }
@@ -3630,7 +3630,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"package_price\":100,\n    \"basic_parameters\":[\n        1,2,3\n    ],\n    \"addon_parameters\":[\n        {\n            \"parameter_id\":\"7\",\n            \"value\":2,\n            \"price\":10\n        }\n    ]\n}",
+                  "raw": "{\n    \"package_price\":100,\n    \"basic_parameters\":[\n        {\n            \"parameter_id\":\"1\",\n            \"value\":10\n        }\n    ],\n    \"addon_parameters\":[\n        {\n            \"parameter_id\":\"7\",\n            \"value\":2,\n            \"price\":10\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"

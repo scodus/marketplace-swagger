@@ -581,11 +581,15 @@ paths:
             schema:
               type: object
               example:
-                title: Consulation hours
-                type: addon
-                description: abc def
+                title: No of documents
+                type: basic
+                code: ABC1234
+                description: abc def ghi
                 has_quantity: 1
-                unit: hours
+                unit: null
+                price_level_1: 100
+                price_level_2: 200
+                price_level_3: 300
       security:
         - bearerAuth: []
       responses:
@@ -604,10 +608,14 @@ paths:
             schema:
               type: object
               example:
-                title: New Parameter
-                description: abc aaass
+                title: Consulation hours
+                code: ABC122
+                description: abc def
                 has_quantity: 1
                 unit: hours
+                price_level_1: 50
+                price_level_2: 55
+                price_level_3: 60
       security:
         - bearerAuth: []
       parameters:
@@ -616,7 +624,7 @@ paths:
           schema:
             type: string
           required: true
-          example: my-consulation-hours
+          example: consulation-hours
       responses:
         '200':
           description: Successful response
@@ -663,8 +671,14 @@ paths:
             schema:
               type: object
               example:
-                title: Premium
+                title: Basic
                 description: abc def
+                accounting_office_type: KPiR
+                default_package: 1
+                collective_invoice: 0
+                promotion_rules: 0
+                individual_package: 1
+                price_list_level: 1
       security:
         - bearerAuth: []
       responses:
@@ -683,8 +697,15 @@ paths:
             schema:
               type: object
               example:
-                title: Platinum
-                description: platinum package
+                title: Basic
+                description: abc def
+                accounting_office_type: KPiR
+                default_package: 1
+                collective_invoice: 0
+                promotion_rules: 0
+                individual_package: 1
+                price_list_level: 1
+                upgrade_version: 1
       security:
         - bearerAuth: []
       parameters:
@@ -693,7 +714,7 @@ paths:
           schema:
             type: string
           required: true
-          example: premium
+          example: basic
       responses:
         '200':
           description: Successful response
@@ -730,9 +751,8 @@ paths:
               example:
                 package_price: 100
                 basic_parameters:
-                  - 1
-                  - 2
-                  - 3
+                  - parameter_id: '1'
+                    value: 10
                 addon_parameters:
                   - parameter_id: '7'
                     value: 2
