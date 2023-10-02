@@ -3567,7 +3567,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"package_price\":100,\n    \"basic_parameters\":[\n        {\n            \"parameter_id\":\"1\",\n            \"value\":10\n        }\n    ],\n    \"addon_parameters\":[\n        {\n            \"parameter_id\":\"7\",\n            \"value\":2,\n            \"price\":10\n        }\n    ]\n}",
+                  "raw": "{\n    \"package_price\":100,\n    \"parameters\":[\n        {\n            \"parameter_id\":\"1\",\n            \"value\":11\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3581,7 +3581,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "platinum"
+                      "value": "basic"
                     }
                   ]
                 }

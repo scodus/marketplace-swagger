@@ -710,13 +710,9 @@ paths:
               type: object
               example:
                 package_price: 100
-                basic_parameters:
+                parameters:
                   - parameter_id: '1'
-                    value: 10
-                addon_parameters:
-                  - parameter_id: '7'
-                    value: 2
-                    price: 10
+                    value: 11
       security:
         - bearerAuth: []
       parameters:
@@ -725,7 +721,7 @@ paths:
           schema:
             type: string
           required: true
-          example: platinum
+          example: basic
       responses:
         '200':
           description: Successful response
