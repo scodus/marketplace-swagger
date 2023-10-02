@@ -36,6 +36,7 @@ tags:
   - name: AO Dashboard > Accountatnt Profile
   - name: AO Dashboard > Users
   - name: AO Dashboard > Package
+  - name: AO Dashboard > Company
   - name: Marketplace
   - name: Marketplace > Auth
   - name: Public
@@ -780,6 +781,89 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/profile-companies/{slug}:
+    get:
+      tags:
+        - Admin Dashboard > Profiles
+      summary: SIngle Profile Companies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile-companies/{profile_slug}:
+    post:
+      tags:
+        - Admin Dashboard > Profiles
+      summary: Assign Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                package_slug: basic
+                company_slug: second-comp-updated
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: profile_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile-companies/{profile_slug}/{company_slug}:
+    delete:
+      tags:
+        - Admin Dashboard > Profiles
+      summary: Remove Assigned Company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: profile_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: second-comp-updated
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-dashboard-data:
+    get:
+      tags:
+        - Admin Dashboard
+      summary: Dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/login:
     post:
       tags:
@@ -1165,6 +1249,41 @@ paths:
             type: string
           required: true
           example: platinum
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/companies:
+    get:
+      tags:
+        - AO Dashboard > Company
+      summary: List Companies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profile-company-assigned:
+    get:
+      tags:
+        - AO Dashboard > Company
+      summary: Company Assignments
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response

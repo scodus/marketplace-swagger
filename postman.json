@@ -3662,8 +3662,151 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "SIngle Profile Companies",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profile-companies/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profile-companies", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Assign Company",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"package_slug\":\"basic\",\n    \"company_slug\":\"second-comp-updated\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/profile-companies/:profile_slug",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "profile-companies",
+                    ":profile_slug"
+                  ],
+                  "variable": [
+                    {
+                      "key": "profile_slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove Assigned Company",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"package_slug\":\"basic\",\n    \"company_slug\":\"aaa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/profile-companies/:profile_slug/:company_slug",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "profile-companies",
+                    ":profile_slug",
+                    ":company_slug"
+                  ],
+                  "variable": [
+                    {
+                      "key": "profile_slug",
+                      "value": "sam-billings"
+                    },
+                    {
+                      "key": "company_slug",
+                      "value": "second-comp-updated"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
+        },
+        {
+          "name": "Dashboard",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{admin_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/admin/company-dashboard-data",
+              "host": ["{{url}}"],
+              "path": ["api", "admin", "company-dashboard-data"]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -4204,6 +4347,67 @@
                       "value": "platinum"
                     }
                   ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Company",
+          "item": [
+            {
+              "name": "List Companies",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/companies?page=1&limit=10",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "companies"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Company Assignments",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile-company-assigned",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profile-company-assigned"]
                 }
               },
               "response": []
