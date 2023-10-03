@@ -3609,7 +3609,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/profiles?page=1&limit=1&accounting_office_id=&name=",
+                  "raw": "{{url}}/api/admin/profiles?page=1&limit=1&accounting_office_id=&name=&package_id=&is_tax_advisor=1&is_fund_reviewer=0&is_dg=0&is_spzoo=1&is_foundations=1&is_cooperatives=0",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "profiles"],
                   "query": [
@@ -3628,6 +3628,34 @@
                     {
                       "key": "name",
                       "value": ""
+                    },
+                    {
+                      "key": "package_id",
+                      "value": ""
+                    },
+                    {
+                      "key": "is_tax_advisor",
+                      "value": "1"
+                    },
+                    {
+                      "key": "is_fund_reviewer",
+                      "value": "0"
+                    },
+                    {
+                      "key": "is_dg",
+                      "value": "0"
+                    },
+                    {
+                      "key": "is_spzoo",
+                      "value": "1"
+                    },
+                    {
+                      "key": "is_foundations",
+                      "value": "1"
+                    },
+                    {
+                      "key": "is_cooperatives",
+                      "value": "0"
                     }
                   ]
                 }
@@ -4411,8 +4439,81 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Change Company Stage Status Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"type\":\"process_status\",\n    \"value\":\"to_do\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company/:slug/change-stage-status",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company",
+                    ":slug",
+                    "change-stage-status"
+                  ],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "xyz"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
+        },
+        {
+          "name": "Dashboard Data",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{account_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/accounting/company-dashboard-data",
+              "host": ["{{url}}"],
+              "path": ["api", "accounting", "company-dashboard-data"]
+            }
+          },
+          "response": []
         }
       ]
     },

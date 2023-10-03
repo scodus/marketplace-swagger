@@ -437,8 +437,8 @@ paths:
   /api/admin/company/{slug}/change-stage-status:
     patch:
       tags:
-        - Admin Dashboard > Company
-      summary: Change Company Stage Status
+        - AO Dashboard > Company
+      summary: Change Company Stage Status Copy
       requestBody:
         content:
           application/json:
@@ -753,6 +753,40 @@ paths:
           in: query
           schema:
             type: string
+        - name: package_id
+          in: query
+          schema:
+            type: string
+        - name: is_tax_advisor
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: is_fund_reviewer
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: is_dg
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: is_spzoo
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: is_foundations
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: is_cooperatives
+          in: query
+          schema:
+            type: integer
+          example: '0'
       responses:
         '200':
           description: Successful response
@@ -1278,6 +1312,18 @@ paths:
       tags:
         - AO Dashboard > Company
       summary: Company Assignments
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company-dashboard-data:
+    get:
+      tags:
+        - AO Dashboard
+      summary: Dashboard Data
       security:
         - bearerAuth: []
       responses:
