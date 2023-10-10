@@ -30,6 +30,7 @@ tags:
   - name: Admin Dashboard > Parameter
   - name: Admin Dashboard > Packages
   - name: Admin Dashboard > Profiles
+  - name: Admin Dashboard > Miscellaneous
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -735,58 +736,11 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: accounting_office_id
-          in: query
-          schema:
-            type: string
-        - name: name
-          in: query
-          schema:
-            type: string
-        - name: package_id
-          in: query
-          schema:
-            type: string
-        - name: is_tax_advisor
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: is_fund_reviewer
-          in: query
-          schema:
-            type: integer
-          example: '0'
         - name: is_dg
           in: query
           schema:
-            type: integer
-          example: '0'
-        - name: is_spzoo
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: is_foundations
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: is_cooperatives
-          in: query
-          schema:
-            type: integer
-          example: '0'
+            type: boolean
+          example: 'true'
       responses:
         '200':
           description: Successful response
@@ -877,6 +831,30 @@ paths:
             type: string
           required: true
           example: second-comp-updated
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile-branches:
+    get:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: List Branches
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile-languages:
+    get:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: List Languages
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -1093,6 +1071,14 @@ paths:
                 is_tax_advisor: true
                 is_fund_reviewer: false
                 keywords: abcs
+                branches:
+                  - 1
+                  - 2
+                  - 3
+                languages:
+                  - 1
+                  - 20
+                max_occupancy: 10
       security:
         - bearerAuth: []
       parameters:
@@ -1425,6 +1411,58 @@ paths:
             type: integer
           example: '1'
         - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: branches[]
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: languages[]
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/branches:
+    get:
+      tags:
+        - Public
+      summary: List Branches
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: perPage
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/languages:
+    get:
+      tags:
+        - Public
+      summary: List Languages
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: perPage
           in: query
           schema:
             type: integer

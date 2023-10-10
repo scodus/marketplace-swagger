@@ -3609,53 +3609,38 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/profiles?page=1&limit=1&accounting_office_id=&name=&package_id=&is_tax_advisor=1&is_fund_reviewer=0&is_dg=0&is_spzoo=1&is_foundations=1&is_cooperatives=0",
+                  "raw": "{{url}}/api/admin/profiles?is_dg=true",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "profiles"],
                   "query": [
                     {
                       "key": "page",
-                      "value": "1"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "1"
+                      "value": "1",
+                      "disabled": true
                     },
                     {
                       "key": "accounting_office_id",
-                      "value": ""
+                      "value": "",
+                      "disabled": true
                     },
                     {
-                      "key": "name",
-                      "value": ""
-                    },
-                    {
-                      "key": "package_id",
-                      "value": ""
-                    },
-                    {
-                      "key": "is_tax_advisor",
-                      "value": "1"
-                    },
-                    {
-                      "key": "is_fund_reviewer",
-                      "value": "0"
-                    },
-                    {
-                      "key": "is_dg",
-                      "value": "0"
-                    },
-                    {
-                      "key": "is_spzoo",
-                      "value": "1"
-                    },
-                    {
-                      "key": "is_foundations",
-                      "value": "1"
+                      "key": "rowsPerPage",
+                      "value": "10",
+                      "disabled": true
                     },
                     {
                       "key": "is_cooperatives",
-                      "value": "0"
+                      "value": "false",
+                      "disabled": true
+                    },
+                    {
+                      "key": "is_dg",
+                      "value": "true"
+                    },
+                    {
+                      "key": "name",
+                      "value": "",
+                      "disabled": true
                     }
                   ]
                 }
@@ -3807,6 +3792,57 @@
                       "value": "second-comp-updated"
                     }
                   ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Miscellaneous",
+          "item": [
+            {
+              "name": "List Branches",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profile-branches",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profile-branches"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "List Languages",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/profile-languages",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profile-languages"]
                 }
               },
               "response": []
@@ -4124,7 +4160,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
+                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"branches\":[1,2,3],\n    \"languages\":[1,20],\n    \"max_occupancy\":10\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4649,7 +4685,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{url}}/api/v1/profiles?page=1&limit=10",
+              "raw": "{{url}}/api/v1/profiles?page=1&limit=10&branches[]=1&branches[]=2&languages[]=1",
               "host": ["{{url}}"],
               "path": ["api", "v1", "profiles"],
               "query": [
@@ -4659,6 +4695,69 @@
                 },
                 {
                   "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "branches[]",
+                  "value": "1"
+                },
+                {
+                  "key": "branches[]",
+                  "value": "2"
+                },
+                {
+                  "key": "languages[]",
+                  "value": "1"
+                },
+                {
+                  "key": "languages[]",
+                  "value": "2",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Branches",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/v1/branches?page=1&perPage=10",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "branches"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Languages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/v1/languages?page=1&perPage=10",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "languages"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
                   "value": "10"
                 }
               ]
