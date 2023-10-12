@@ -2711,7 +2711,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"second comp\",\n    \"short_name\":\"def\",\n    \"email\":\"second@mail.com\",\n    \"phone\":\"+91 2142802\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"second user\",\n    \"user_email\":\"seconduser@mail.com\"\n}",
+                  "raw": "{\n    \"name\":\"second comp\",\n    \"short_name\":\"def\",\n    \"email\":\"secondcompanyotp@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"second user\",\n    \"user_email\":\"secondusercompany@mail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3203,6 +3203,38 @@
                       "value": "xyz"
                     }
                   ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Send otp",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"country_code\":\"+1\",\n    \"phone_number\":\"5597679141\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company-send-otp",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-send-otp"]
                 }
               },
               "response": []
