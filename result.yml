@@ -270,9 +270,9 @@ paths:
             schema:
               type: object
               example:
-                name: second comp
+                name: third comp
                 short_name: def
-                email: secondcompanyotp@mail.com
+                email: thirdcompany@mail.com
                 country_code: '+91'
                 phone_number: '2142802'
                 otp: '14607'
@@ -288,7 +288,7 @@ paths:
                   no_of_premises: pr 4
                   voivodeship: voivo 2
                 user_name: second user
-                user_email: secondusercompany@mail.com
+                user_email: thirdusercompany@mail.com
       security:
         - bearerAuth: []
       parameters:
@@ -313,29 +313,23 @@ paths:
             schema:
               type: object
               example:
-                name: second comp updated
+                name: third comp
                 short_name: def
-                tax_id: 456
-                regon: regon
-                bdo: bdo
-                pkd: pkd
-                krs: krs
-                ceidg: null
-                phone_number: phone
-                is_small_company: 0
-                email: seconds@mail.com
-                created_at: '2023-07-19'
+                email: thirdcompany@mail.com
+                country_code: '+91'
+                phone_number: '2142803'
+                otp: '14607'
                 addresses:
-                  country: Polands
+                  country: Poland
+                  city: Warswa
+                  zip: '9800'
+                  post: p1
                   street: street 1
-                  city: Warswas
-                  zip: 9800s
-                  post: p1s
-                  house_number: h 123s
-                  number_of_premises: null
-                  district: district 1s
-                  county: county 1s
-                  voivodeship: voivo 2s
+                  district: district 1
+                  county: county 1
+                  house_number: h 123
+                  no_of_premises: pr 4
+                  voivodeship: voivo 3
       security:
         - bearerAuth: []
       parameters:
@@ -349,7 +343,25 @@ paths:
           schema:
             type: string
           required: true
-          example: second-comp
+          example: third-comp
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin Dashboard > Company
+      summary: Company Detail
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: third-comp
       responses:
         '200':
           description: Successful response
@@ -381,25 +393,6 @@ paths:
             type: string
           required: true
           example: company-4th
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /admin/company/{slug}:
-    get:
-      tags:
-        - Admin Dashboard > Company
-      summary: Company Detail
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: company-two-1
       responses:
         '200':
           description: Successful response
@@ -757,12 +750,6 @@ paths:
       summary: List Accountant Profile
       security:
         - bearerAuth: []
-      parameters:
-        - name: is_dg
-          in: query
-          schema:
-            type: boolean
-          example: 'true'
       responses:
         '200':
           description: Successful response
@@ -853,6 +840,32 @@ paths:
             type: string
           required: true
           example: second-comp-updated
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/profile/{slug}/status:
+    put:
+      tags:
+        - Admin Dashboard > Profiles
+      summary: Change Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
       responses:
         '200':
           description: Successful response
@@ -1101,6 +1114,7 @@ paths:
                   - 1
                   - 20
                 max_occupancy: 10
+                legal_form: legal_person_company
       security:
         - bearerAuth: []
       parameters:
@@ -1144,6 +1158,8 @@ paths:
                 is_tax_advisor: true
                 is_fund_reviewer: false
                 keywords: abcs
+                max_occupancy: 11
+                legal_form: legal_person_company
       security:
         - bearerAuth: []
       responses:
@@ -1168,6 +1184,32 @@ paths:
                 avatar:
                   type: string
                   format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sam-billings
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profile/{slug}/status:
+    put:
+      tags:
+        - AO Dashboard > Accountatnt Profile
+      summary: Change Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: pending
       security:
         - bearerAuth: []
       parameters:
@@ -1489,6 +1531,18 @@ paths:
           schema:
             type: integer
           example: '10'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/parameters-filters:
+    get:
+      tags:
+        - Public
+      summary: List Filters
+      security:
+        - noauthAuth: []
       responses:
         '200':
           description: Successful response

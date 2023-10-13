@@ -2711,7 +2711,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"second comp\",\n    \"short_name\":\"def\",\n    \"email\":\"secondcompanyotp@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"second user\",\n    \"user_email\":\"secondusercompany@mail.com\"\n}",
+                  "raw": "{\n    \"name\":\"third comp\",\n    \"short_name\":\"def\",\n    \"email\":\"thirdcompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"second user\",\n    \"user_email\":\"thirdusercompany@mail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2749,7 +2749,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\": \"second comp updated\",\n    \"short_name\": \"def\",\n    \"tax_id\": 456,\n    \"regon\": \"regon\",\n    \"bdo\": \"bdo\",\n    \"pkd\": \"pkd\",\n    \"krs\": \"krs\",\n    \"ceidg\": null,\n    \"phone_number\": \"phone\",\n    \"is_small_company\": 0,\n    \"email\": \"seconds@mail.com\",\n    \"created_at\": \"2023-07-19\",\n    \"addresses\": {\n        \"country\": \"Polands\",\n        \"street\": \"street 1\",\n        \"city\": \"Warswas\",\n        \"zip\": \"9800s\",\n        \"post\": \"p1s\",\n        \"house_number\": \"h 123s\",\n        \"number_of_premises\": null,\n        \"district\": \"district 1s\",\n        \"county\": \"county 1s\",\n        \"voivodeship\": \"voivo 2s\"\n    }\n}",
+                  "raw": "{\n    \"name\":\"third comp\",\n    \"short_name\":\"def\",\n    \"email\":\"thirdcompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142803\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 3\"\n    }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2763,7 +2763,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "second-comp"
+                      "value": "third-comp"
                     }
                   ]
                 }
@@ -3075,7 +3075,14 @@
               },
               "request": {
                 "auth": {
-                  "type": "noauth"
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
                 },
                 "method": "GET",
                 "header": [
@@ -3091,13 +3098,13 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/admin/company/:slug",
+                  "raw": "{{url}}/api/admin/company/:slug",
                   "host": ["{{url}}"],
-                  "path": ["admin", "company", ":slug"],
+                  "path": ["api", "admin", "company", ":slug"],
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "company-two-1"
+                      "value": "third-comp"
                     }
                   ]
                 }
@@ -3641,7 +3648,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/profiles?is_dg=true",
+                  "raw": "{{url}}/api/admin/profiles",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "profiles"],
                   "query": [
@@ -3667,7 +3674,8 @@
                     },
                     {
                       "key": "is_dg",
-                      "value": "true"
+                      "value": "true",
+                      "disabled": true
                     },
                     {
                       "key": "name",
@@ -3822,6 +3830,44 @@
                     {
                       "key": "company_slug",
                       "value": "second-comp-updated"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\":\"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/profile/:slug/status",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "profile", ":slug", "status"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
                     }
                   ]
                 }
@@ -4160,7 +4206,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"accounting_office_id\": \"1\",\n    \"name\": \"sam\",\n    \"surname\": \"billing\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\"\n}",
+                  "raw": "{\n    \"accounting_office_id\": \"1\",\n    \"name\": \"sam\",\n    \"surname\": \"billing\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"max_occupancy\":11,\n    \"legal_form\":\"legal_person_company\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4192,7 +4238,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"branches\":[1,2,3],\n    \"languages\":[1,20],\n    \"max_occupancy\":10\n}",
+                  "raw": "{\n    \"name\": \"Sam\",\n    \"surname\": \"Billings\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"sam.billing@mail.com\",\n    \"phone\": \"+1234\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"branches\":[1,2,3],\n    \"languages\":[1,20],\n    \"max_occupancy\":10,\n    \"legal_form\":\"legal_person_company\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4247,6 +4293,44 @@
                   "raw": "{{url}}/api/accounting/profile/:slug/avatar",
                   "host": ["{{url}}"],
                   "path": ["api", "accounting", "profile", ":slug", "avatar"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "sam-billings"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\":\"pending\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile/:slug/status",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profile", ":slug", "status"],
                   "variable": [
                     {
                       "key": "slug",
@@ -4793,6 +4877,22 @@
                   "value": "10"
                 }
               ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Filters",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/v1/parameters-filters",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "parameters-filters"]
             }
           },
           "response": []
