@@ -482,6 +482,62 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/company/{company_slug}/assignAccountant:
+    put:
+      tags:
+        - Admin Dashboard > Company
+      summary: Assign Accountant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                profile_slug: sam-billings
+                package_slug: basic
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: second-comp-otp
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company/{company_slug}/assignedAccountant:
+    get:
+      tags:
+        - Admin Dashboard > Company
+      summary: View Accountant
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: second-comp-otp
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/users:
     get:
       tags:
@@ -624,6 +680,32 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/parameter/{slug}/status:
+    put:
+      tags:
+        - Admin Dashboard > Parameter
+      summary: Change Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: no-of-documents
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/packages:
     get:
       tags:
@@ -673,7 +755,7 @@ paths:
             schema:
               type: object
               example:
-                title: Basic
+                title: Pro
                 description: abc def
                 accounting_office_type: KPiR
                 default_package: 1
@@ -690,7 +772,7 @@ paths:
           schema:
             type: string
           required: true
-          example: basic
+          example: pro
       responses:
         '200':
           description: Successful response
@@ -708,7 +790,52 @@ paths:
           schema:
             type: string
           required: true
-          example: platinum
+          example: basic
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/package/{slug}/status:
+    put:
+      tags:
+        - Admin Dashboard > Packages
+      summary: Change Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: pro
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/package/{slug}/versions:
+    get:
+      tags:
+        - Admin Dashboard > Packages
+      summary: Package Old Versions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: pro
       responses:
         '200':
           description: Successful response
@@ -1489,6 +1616,29 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: legal_form
+          in: query
+          schema:
+            type: string
+          description: natural_person_jdg, legal_person_company
+          example: natural_person_jdg
+        - name: parameter_filters[0][parameter_id]
+          in: query
+          schema:
+            type: integer
+          description: id of filter parameter
+          example: '1'
+        - name: parameter_filters[0][value]
+          in: query
+          schema:
+            type: integer
+          description: max value of filter parameter
+          example: '11'
+        - name: account_office_type
+          in: query
+          schema:
+            type: string
+          example: PK
       responses:
         '200':
           description: Successful response

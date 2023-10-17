@@ -3245,6 +3245,115 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Assign Accountant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"profile_slug\":\"sam-billings\",\n    \"package_slug\":\"basic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company/:company_slug/assignAccountant",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company",
+                    ":company_slug",
+                    "assignAccountant"
+                  ],
+                  "variable": [
+                    {
+                      "key": "company_slug",
+                      "value": "second-comp-otp"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "View Accountant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/company/:company_slug/assignedAccountant",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company",
+                    ":company_slug",
+                    "assignedAccountant"
+                  ],
+                  "variable": [
+                    {
+                      "key": "company_slug",
+                      "value": "second-comp-otp"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -3434,6 +3543,44 @@
               "response": []
             },
             {
+              "name": "Change Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\":1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter/:slug/status",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter", ":slug", "status"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "no-of-documents"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "Delete Parameter",
               "request": {
                 "auth": {
@@ -3539,7 +3686,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Basic\",\n    \"description\":\"abc def\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"price_list_level\":1,\n    \"upgrade_version\":1\n}",
+                  "raw": "{\n    \"title\":\"Pro\",\n    \"description\":\"abc def\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"price_list_level\":1,\n    \"upgrade_version\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3553,7 +3700,45 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "basic"
+                      "value": "pro"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\":1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/package/:slug/status",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "package", ":slug", "status"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "pro"
                     }
                   ]
                 }
@@ -3582,7 +3767,36 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "platinum"
+                      "value": "basic"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Package Old Versions",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/package/:slug/versions",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "package", ":slug", "versions"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "pro"
                     }
                   ]
                 }
@@ -4801,7 +5015,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{url}}/api/v1/profiles?page=1&limit=10&branches[]=1&branches[]=2&languages[]=1",
+              "raw": "{{url}}/api/v1/profiles?page=1&limit=10&branches[]=1&branches[]=2&languages[]=1&legal_form=natural_person_jdg&parameter_filters[0][parameter_id]=1&parameter_filters[0][value]=11&account_office_type=PK",
               "host": ["{{url}}"],
               "path": ["api", "v1", "profiles"],
               "query": [
@@ -4826,9 +5040,23 @@
                   "value": "1"
                 },
                 {
-                  "key": "languages[]",
-                  "value": "2",
-                  "disabled": true
+                  "key": "legal_form",
+                  "value": "natural_person_jdg",
+                  "description": "natural_person_jdg, legal_person_company"
+                },
+                {
+                  "key": "parameter_filters[0][parameter_id]",
+                  "value": "1",
+                  "description": "id of filter parameter"
+                },
+                {
+                  "key": "parameter_filters[0][value]",
+                  "value": "11",
+                  "description": "max value of filter parameter"
+                },
+                {
+                  "key": "account_office_type",
+                  "value": "PK"
                 }
               ]
             }
