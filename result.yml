@@ -28,6 +28,7 @@ tags:
   - name: Admin Dashboard > Company
   - name: Admin Dashboard > Users
   - name: Admin Dashboard > Parameter
+  - name: Admin Dashboard > ParameterCode
   - name: Admin Dashboard > Packages
   - name: Admin Dashboard > Profiles
   - name: Admin Dashboard > Miscellaneous
@@ -538,6 +539,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/company-payment-initiate:
+    get:
+      tags:
+        - Admin Dashboard > Company
+      summary: Generate Payment Link
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: email
+          in: query
+          schema:
+            type: string
+          example: n_bijay.niraula@cashdirector.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/users:
     get:
       tags:
@@ -701,6 +720,18 @@ paths:
             type: string
           required: true
           example: no-of-documents
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/parameter-codes:
+    get:
+      tags:
+        - Admin Dashboard > ParameterCode
+      summary: Codes
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -998,11 +1029,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/profile-branches:
-    get:
+  /api/admin/branches:
+    post:
       tags:
         - Admin Dashboard > Miscellaneous
-      summary: List Branches
+      summary: Create Branch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: aa
       security:
         - bearerAuth: []
       responses:
@@ -1010,13 +1048,108 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/profile-languages:
-    get:
+  /api/admin/branches/{id}:
+    put:
       tags:
         - Admin Dashboard > Miscellaneous
-      summary: List Languages
+      summary: Edit Branch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: bb
       security:
         - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '17'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Delete Branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '17'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/language:
+    post:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Create Language
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: new lang
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/language/{id}:
+    put:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Create Language Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: new lang up
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Delete Language
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5'
       responses:
         '200':
           description: Successful response
@@ -1659,7 +1792,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '100'
       responses:
         '200':
           description: Successful response

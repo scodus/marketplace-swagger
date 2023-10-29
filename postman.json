@@ -3354,6 +3354,35 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Generate Payment Link",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/company-payment-initiate?email=n_bijay.niraula@cashdirector.com",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-payment-initiate"],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "n_bijay.niraula@cashdirector.com"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -3605,6 +3634,34 @@
                       "value": "consulation-hours"
                     }
                   ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "ParameterCode",
+          "item": [
+            {
+              "name": "Codes",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter-codes",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter-codes"]
                 }
               },
               "response": []
@@ -4094,7 +4151,7 @@
           "name": "Miscellaneous",
           "item": [
             {
-              "name": "List Branches",
+              "name": "Create Branch",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -4106,18 +4163,27 @@
                     }
                   ]
                 },
-                "method": "GET",
+                "method": "POST",
                 "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"aa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "raw": "{{url}}/api/admin/profile-branches",
+                  "raw": "{{url}}/api/admin/branches",
                   "host": ["{{url}}"],
-                  "path": ["api", "admin", "profile-branches"]
+                  "path": ["api", "admin", "branches"]
                 }
               },
               "response": []
             },
             {
-              "name": "List Languages",
+              "name": "Edit Branch",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -4129,12 +4195,155 @@
                     }
                   ]
                 },
-                "method": "GET",
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"bb\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/branches/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "branches", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "17"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/profile-languages",
+                  "raw": "{{url}}/api/admin/branches/:id",
                   "host": ["{{url}}"],
-                  "path": ["api", "admin", "profile-languages"]
+                  "path": ["api", "admin", "branches", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "17"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Language",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"new lang\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/language",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "language"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Language Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"new lang up\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/language/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "language", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Language",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/language/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "language", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "5"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -5069,7 +5278,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{url}}/api/v1/branches?page=1&perPage=10",
+              "raw": "{{url}}/api/v1/branches?page=1&perPage=100",
               "host": ["{{url}}"],
               "path": ["api", "v1", "branches"],
               "query": [
@@ -5079,7 +5288,7 @@
                 },
                 {
                   "key": "perPage",
-                  "value": "10"
+                  "value": "100"
                 }
               ]
             }
