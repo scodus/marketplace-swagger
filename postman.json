@@ -3518,7 +3518,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"No of documents\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300\n}",
+                  "raw": "{\n    \"title\":\"No of hourly price\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3550,7 +3550,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\": \"Consulation hours\",\n    \"code\": \"ABC122\",\n    \"description\": \"abc def\",\n    \"has_quantity\": 1,\n    \"unit\": \"hours\",\n    \"price_level_1\": 50,\n    \"price_level_2\": 55,\n    \"price_level_3\": 60\n}",
+                  "raw": "{\n    \"title\":\"No of hourly price\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":0,\n    \"is_bool\":0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3564,7 +3564,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "consulation-hours"
+                      "value": "no-of-hourly-price"
                     }
                   ]
                 }

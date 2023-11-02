@@ -632,7 +632,7 @@ paths:
             schema:
               type: object
               example:
-                title: No of documents
+                title: No of hourly price
                 type: basic
                 code: ABC1234
                 description: abc def ghi
@@ -641,6 +641,8 @@ paths:
                 price_level_1: 100
                 price_level_2: 200
                 price_level_3: 300
+                is_filter: 1
+                is_bool: 1
       security:
         - bearerAuth: []
       responses:
@@ -659,14 +661,16 @@ paths:
             schema:
               type: object
               example:
-                title: Consulation hours
-                code: ABC122
-                description: abc def
+                title: No of hourly price
+                code: ABC1234
+                description: abc def ghi
                 has_quantity: 1
-                unit: hours
-                price_level_1: 50
-                price_level_2: 55
-                price_level_3: 60
+                unit: null
+                price_level_1: 100
+                price_level_2: 200
+                price_level_3: 300
+                is_filter: 0
+                is_bool: 0
       security:
         - bearerAuth: []
       parameters:
@@ -675,7 +679,7 @@ paths:
           schema:
             type: string
           required: true
-          example: consulation-hours
+          example: no-of-hourly-price
       responses:
         '200':
           description: Successful response
@@ -1349,11 +1353,11 @@ paths:
             schema:
               type: object
               example:
-                name: Sam
-                surname: Billings
+                name: sinister
+                surname: six
                 title: mr
-                accountant_email: sam.billing@mail.com
-                phone: '+1234'
+                accountant_email: sinister.six@mail.com
+                phone: '+555432342'
                 experience: describe the experiences
                 city: ktm
                 postal_code: '44600'
@@ -1366,15 +1370,24 @@ paths:
                 is_tax_advisor: true
                 is_fund_reviewer: false
                 keywords: abcs
-                branches:
-                  - 1
-                  - 2
-                  - 3
-                languages:
-                  - 1
-                  - 20
-                max_occupancy: 10
+                max_occupancy: 11
                 legal_form: legal_person_company
+                branches: []
+                languages: []
+                business_accounting: 0
+                supports_ryczałt: 0
+                supports_kpir: 0
+                supports_pk: 0
+                calculates_payroll: 0
+                supports_uod: 0
+                supports_uz: 0
+                does_foreign_operations: 0
+                free_business_starter: 0
+                secure_video_encryption: 0
+                invoicing_program_included_price: 0
+                online_document_archived_included: 0
+                active: 0
+                max_receivable: 20
       security:
         - bearerAuth: []
       parameters:
@@ -1383,7 +1396,7 @@ paths:
           schema:
             type: string
           required: true
-          example: sam-billings
+          example: sinister-six
       responses:
         '200':
           description: Successful response
@@ -1401,11 +1414,11 @@ paths:
               type: object
               example:
                 accounting_office_id: '1'
-                name: sam
-                surname: billing
+                name: sinister
+                surname: six
                 title: mr
-                accountant_email: sam.billing@mail.com
-                phone: '+1234'
+                accountant_email: sinister.six@mail.com
+                phone: '+555432342'
                 experience: describe the experiences
                 city: ktm
                 postal_code: '44600'
@@ -1420,6 +1433,22 @@ paths:
                 keywords: abcs
                 max_occupancy: 11
                 legal_form: legal_person_company
+                branches: []
+                languages: []
+                business_accounting: 1
+                supports_ryczałt: 1
+                supports_kpir: 1
+                supports_pk: 1
+                calculates_payroll: 1
+                supports_uod: 1
+                supports_uz: 1
+                does_foreign_operations: 1
+                free_business_starter: 1
+                secure_video_encryption: 1
+                invoicing_program_included_price: 1
+                online_document_archived_included: 1
+                active: 1
+                max_receivable: 10
       security:
         - bearerAuth: []
       responses:
@@ -1772,6 +1801,66 @@ paths:
           schema:
             type: string
           example: PK
+        - name: business_accounting
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: supports_ryczałt
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: supports_kpir
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: supports_pk
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: calculates_payroll
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: supports_uod
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: supports_uz
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: does_foreign_operations
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: free_business_starter
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: secure_video_encryption
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: invoicing_program_included_price
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: online_document_archived_included
+          in: query
+          schema:
+            type: integer
+          example: '0'
       responses:
         '200':
           description: Successful response
