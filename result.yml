@@ -13,6 +13,7 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
+  - url: https://dane.biznes.gov.pl
 components:
   securitySchemes:
     bearerAuth:
@@ -540,18 +541,47 @@ paths:
           content:
             application/json: {}
   /api/admin/company-payment-initiate:
-    get:
+    post:
       tags:
         - Admin Dashboard > Company
       summary: Generate Payment Link
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                profile_slug: bijay-niraula
+                package_slug: gold
+                company_slug: bijay-company
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/paynow/payment-status:
+    post:
+      tags:
+        - Admin Dashboard > Company
+      summary: Payment Status Change
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paymentId: NOLV-8F9-08K-WGD
+                externalId: 9a8749e2-661a-4814-9b2e-3c4e03eff5c0
+                status: CONFIRMED
+                modifiedAt: '2018-12-12T13:24:52'
       parameters:
-        - name: email
-          in: query
+        - name: Signature
+          in: header
           schema:
             type: string
-          example: n_bijay.niraula@cashdirector.com
+          example: /OpKgCkcu+AXGUhrp2QU6TL4XUz+u9cx65OcMRxzZgQ=
       responses:
         '200':
           description: Successful response
@@ -733,9 +763,71 @@ paths:
     get:
       tags:
         - Admin Dashboard > ParameterCode
-      summary: Codes
+      summary: List Codes
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin Dashboard > ParameterCode
+      summary: Create Code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                code: UZi
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/parameter-codes/{id}:
+    put:
+      tags:
+        - Admin Dashboard > ParameterCode
+      summary: Update Code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                code: UZiiiii
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '14'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin Dashboard > ParameterCode
+      summary: Update Code Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '13'
       responses:
         '200':
           description: Successful response
@@ -890,7 +982,7 @@ paths:
                 package_price: 100
                 parameters:
                   - parameter_id: '1'
-                    value: 11
+                    value: 0
       security:
         - bearerAuth: []
       parameters:
@@ -1736,7 +1828,7 @@ paths:
               example:
                 new_password: P@ssw0rd
                 new_password_confirmation: P@ssw0rd
-                token: token
+                token: i77OQ7DLy49zTj7mFHCm
       responses:
         '200':
           description: Successful response
@@ -1915,6 +2007,24 @@ paths:
       summary: List Filters
       security:
         - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/ceidg/v2/firma:
+    get:
+      tags:
+        - Public
+      summary: External NIP Api
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: nip
+          in: query
+          schema:
+            type: integer
+          example: '9151680204'
       responses:
         '200':
           description: Successful response

@@ -3368,18 +3368,49 @@
                     }
                   ]
                 },
-                "method": "GET",
+                "method": "POST",
                 "header": [],
-                "url": {
-                  "raw": "{{url}}/api/admin/company-payment-initiate?email=n_bijay.niraula@cashdirector.com",
-                  "host": ["{{url}}"],
-                  "path": ["api", "admin", "company-payment-initiate"],
-                  "query": [
-                    {
-                      "key": "email",
-                      "value": "n_bijay.niraula@cashdirector.com"
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"profile_slug\":\"bijay-niraula\",\n    \"package_slug\":\"gold\",\n    \"company_slug\":\"bijay-company\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
                     }
-                  ]
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company-payment-initiate",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-payment-initiate"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Payment Status Change",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Signature",
+                    "value": "/OpKgCkcu+AXGUhrp2QU6TL4XUz+u9cx65OcMRxzZgQ=",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"paymentId\": \"NOLV-8F9-08K-WGD\",\n    \"externalId\": \"9a8749e2-661a-4814-9b2e-3c4e03eff5c0\",\n    \"status\": \"CONFIRMED\",\n    \"modifiedAt\": \"2018-12-12T13:24:52\"\n}   ",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/v1/paynow/payment-status",
+                  "host": ["{{url}}"],
+                  "path": ["api", "v1", "paynow", "payment-status"]
                 }
               },
               "response": []
@@ -3644,7 +3675,7 @@
           "name": "ParameterCode",
           "item": [
             {
-              "name": "Codes",
+              "name": "List Codes",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -3662,6 +3693,105 @@
                   "raw": "{{url}}/api/admin/parameter-codes",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "parameter-codes"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Code",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"code\":\"UZi\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter-codes",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter-codes"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Code",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"code\":\"UZiiiii\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter-codes/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter-codes", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "14"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Code Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/parameter-codes/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "parameter-codes", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "13"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -3877,7 +4007,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"package_price\":100,\n    \"parameters\":[\n        {\n            \"parameter_id\":\"1\",\n            \"value\":11\n        }\n    ]\n}",
+                  "raw": "{\n    \"package_price\":100,\n    \"parameters\":[\n        {\n            \"parameter_id\":\"1\",\n            \"value\":0\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5183,7 +5313,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"token\"\n}",
+                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"i77OQ7DLy49zTj7mFHCm\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5378,6 +5508,36 @@
               "raw": "{{url}}/api/v1/parameters-filters",
               "host": ["{{url}}"],
               "path": ["api", "v1", "parameters-filters"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "External NIP Api",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJraWQiOiJjZWlkZyIsImFsZyI6IkhTNTEyIn0.eyJnaXZlbl9uYW1lIjoiUkFGQcWBIiwicGVzZWwiOiI3MDA3MDcwMjM1MyIsImlhdCI6MTY3NzU5OTU4NCwiZmFtaWx5X25hbWUiOiJTVFJaRUxFQ0tJIiwiY2xpZW50X2lkIjoiVVNFUi03MDA3MDcwMjM1My1SQUZBxYEtU1RSWkVMRUNLSSJ9.CWnF7wS9wbPn0-pblA9PjucLc-QMk3v5uftH9QszjE9m_RBvG_EaludhSiIyh2s3tb_m9F43xQUbUe_VYVUY8Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dane.biznes.gov.pl/api/ceidg/v2/firma?nip=9151680204",
+              "protocol": "https",
+              "host": ["dane", "biznes", "gov", "pl"],
+              "path": ["api", "ceidg", "v2", "firma"],
+              "query": [
+                {
+                  "key": "nip",
+                  "value": "9151680204"
+                }
+              ]
             }
           },
           "response": []
