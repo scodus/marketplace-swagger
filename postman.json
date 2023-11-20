@@ -3549,7 +3549,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"No of hourly price\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1\n}",
+                  "raw": "{\n    \"title\":\"New ryczałt\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1,\n    \"accounting_office_type\":\"ryczałt\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3581,7 +3581,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"No of hourly price\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":0,\n    \"is_bool\":0\n}",
+                  "raw": "{\n    \"title\":\"New ryczalt\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":0,\n    \"is_bool\":0,\n    \"accounting_office_type\":\"PK\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3595,7 +3595,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "no-of-hourly-price"
+                      "value": "new-ryczalt"
                     }
                   ]
                 }
