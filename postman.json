@@ -3549,7 +3549,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"New ryczałt\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1,\n    \"accounting_office_type\":\"ryczałt\"\n}",
+                  "raw": "{\n    \"title\":\"New sample\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1,\n    \"accounting_office_type\":\"ryczałt\",\n    \"default_value\":10\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3581,7 +3581,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"New ryczalt\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":0,\n    \"is_bool\":0,\n    \"accounting_office_type\":\"PK\"\n}",
+                  "raw": "{\n    \"title\":\"New sample\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":0,\n    \"accounting_office_type\":\"PK\",\n    \"default_value\":11\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3595,7 +3595,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "new-ryczalt"
+                      "value": "new-sample"
                     }
                   ]
                 }
@@ -3841,7 +3841,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Basic\",\n    \"description\":\"abc def\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"price_list_level\":1\n}",
+                  "raw": "{\n    \"title\":\"Pro top\",\n    \"description\":\"pro top\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"accounting_office_id\":1,\n    \"price_list_level\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3873,7 +3873,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"Pro\",\n    \"description\":\"abc def\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"price_list_level\":1,\n    \"upgrade_version\":1\n}",
+                  "raw": "{\n    \"title\":\"Pro top\",\n    \"description\":\"pro top update\",\n    \"accounting_office_type\":\"KPiR\",\n    \"default_package\":1,\n    \"collective_invoice\":0,\n    \"promotion_rules\":0,\n    \"individual_package\":1,\n    \"accounting_office_id\":1,\n    \"price_list_level\":1,\n    \"upgrade_version\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3887,7 +3887,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "pro"
+                      "value": "pro-top"
                     }
                   ]
                 }
@@ -4499,6 +4499,35 @@
               "raw": "{{url}}/api/admin/company-dashboard-data",
               "host": ["{{url}}"],
               "path": ["api", "admin", "company-dashboard-data"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Company Import",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{admin_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/admin/company-ceidg-import/:nip",
+              "host": ["{{url}}"],
+              "path": ["api", "admin", "company-ceidg-import", ":nip"],
+              "variable": [
+                {
+                  "key": "nip",
+                  "value": "9151680204"
+                }
+              ]
             }
           },
           "response": []

@@ -662,7 +662,7 @@ paths:
             schema:
               type: object
               example:
-                title: New ryczałt
+                title: New sample
                 type: basic
                 code: ABC1234
                 description: abc def ghi
@@ -674,6 +674,7 @@ paths:
                 is_filter: 1
                 is_bool: 1
                 accounting_office_type: ryczałt
+                default_value: 10
       security:
         - bearerAuth: []
       responses:
@@ -692,7 +693,7 @@ paths:
             schema:
               type: object
               example:
-                title: New ryczalt
+                title: New sample
                 code: ABC1234
                 description: abc def ghi
                 has_quantity: 1
@@ -700,9 +701,10 @@ paths:
                 price_level_1: 100
                 price_level_2: 200
                 price_level_3: 300
-                is_filter: 0
+                is_filter: 1
                 is_bool: 0
                 accounting_office_type: PK
+                default_value: 11
       security:
         - bearerAuth: []
       parameters:
@@ -711,7 +713,7 @@ paths:
           schema:
             type: string
           required: true
-          example: new-ryczalt
+          example: new-sample
       responses:
         '200':
           description: Successful response
@@ -858,13 +860,14 @@ paths:
             schema:
               type: object
               example:
-                title: Basic
-                description: abc def
+                title: Pro top
+                description: pro top
                 accounting_office_type: KPiR
                 default_package: 1
                 collective_invoice: 0
                 promotion_rules: 0
                 individual_package: 1
+                accounting_office_id: 1
                 price_list_level: 1
       security:
         - bearerAuth: []
@@ -884,13 +887,14 @@ paths:
             schema:
               type: object
               example:
-                title: Pro
-                description: abc def
+                title: Pro top
+                description: pro top update
                 accounting_office_type: KPiR
                 default_package: 1
                 collective_invoice: 0
                 promotion_rules: 0
                 individual_package: 1
+                accounting_office_id: 1
                 price_list_level: 1
                 upgrade_version: 1
       security:
@@ -901,7 +905,7 @@ paths:
           schema:
             type: string
           required: true
-          example: pro
+          example: pro-top
       responses:
         '200':
           description: Successful response
@@ -1260,6 +1264,25 @@ paths:
       summary: Dashboard
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-ceidg-import/{nip}:
+    get:
+      tags:
+        - Admin Dashboard
+      summary: Company Import
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: nip
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9151680204'
       responses:
         '200':
           description: Successful response
