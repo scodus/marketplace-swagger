@@ -3278,7 +3278,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"profile_slug\":\"sam-billings\",\n    \"package_slug\":\"basic\"\n}",
+                  "raw": "{\n    \"profile_slug\":\"sam-billings\",\n    \"package_slug\":\"basic\",\n    \"parameter_filters\":[\n        {\n            \"parameter_id\" : 1,\n            \"value\":10\n        },\n        {\n            \"parameter_id\":2,\n            \"value\":11\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3372,7 +3372,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"profile_slug\":\"bijay-niraula\",\n    \"package_slug\":\"gold\",\n    \"company_slug\":\"bijay-company\"\n}",
+                  "raw": "{\n    \"profile_slug\":\"sinister-six\",\n    \"package_slug\":\"basic\",\n    \"company_slug\":\"bug-75-1\",\n    \"parameter_filters\":[\n        {\n            \"parameter_id\" : 1,\n            \"value\":10\n        },\n        {\n            \"parameter_id\":2,\n            \"value\":11\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4163,7 +4163,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"package_slug\":\"basic\",\n    \"company_slug\":\"second-comp-updated\"\n}",
+                  "raw": "{\n    \"package_slug\":\"basic\",\n    \"company_slug\":\"second-comp-updated\",\n    \"parameter_filters\":[\n        {\n            \"parameter_id\" : 1,\n            \"value\":10\n        },\n        {\n            \"parameter_id\":2,\n            \"value\":11\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5383,7 +5383,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{url}}/api/v1/profiles?page=1&limit=10&branches[]=1&branches[]=2&languages[]=1&legal_form=natural_person_jdg&parameter_filters[0][parameter_id]=1&parameter_filters[0][value]=11&account_office_type=PK&business_accounting=0&supports_ryczałt=0&supports_kpir=0&supports_pk=0&calculates_payroll=0&supports_uod=0&supports_uz=0&does_foreign_operations=0&free_business_starter=0&secure_video_encryption=0&invoicing_program_included_price=0&online_document_archived_included=0",
+              "raw": "{{url}}/api/v1/profiles?page=1&limit=10&parameter_filters[]=%7B%22parameter_id%22:1,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:2,%22value%22:2%7D&parameter_filters[]=%7B%22parameter_id%22:3,%22value%22:3%7D&parameter_filters[]=%7B%22parameter_id%22:4,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:5,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:6,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:7,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:8,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:9,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:10,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:11,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:18,%22value%22:3%7D&parameter_filters[]=%7B%22parameter_id%22:%2217%22,%22value%22:%2212%22%7D&account_office_type=rycza%C5%82t&business_accounting=1&supports_rycza%C5%82t=1&free_business_starter=1&secure_video_encryption=1&invoicing_program_included_price=1&online_document_archived_included=1",
               "host": ["{{url}}"],
               "path": ["api", "v1", "profiles"],
               "query": [
@@ -5396,83 +5396,140 @@
                   "value": "10"
                 },
                 {
-                  "key": "branches[]",
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:1,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:2,%22value%22:2%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:3,%22value%22:3%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:4,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:5,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:6,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:7,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:8,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:9,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:10,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:11,%22value%22:0%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:18,%22value%22:3%7D"
+                },
+                {
+                  "key": "parameter_filters[]",
+                  "value": "%7B%22parameter_id%22:%2217%22,%22value%22:%2212%22%7D"
+                },
+                {
+                  "key": "account_office_type",
+                  "value": "rycza%C5%82t"
+                },
+                {
+                  "key": "business_accounting",
+                  "value": "1"
+                },
+                {
+                  "key": "supports_rycza%C5%82t",
+                  "value": "1"
+                },
+                {
+                  "key": "free_business_starter",
+                  "value": "1"
+                },
+                {
+                  "key": "secure_video_encryption",
+                  "value": "1"
+                },
+                {
+                  "key": "invoicing_program_included_price",
+                  "value": "1"
+                },
+                {
+                  "key": "online_document_archived_included",
                   "value": "1"
                 },
                 {
                   "key": "branches[]",
-                  "value": "2"
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "branches[]",
+                  "value": "2",
+                  "disabled": true
                 },
                 {
                   "key": "languages[]",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "legal_form",
                   "value": "natural_person_jdg",
-                  "description": "natural_person_jdg, legal_person_company"
-                },
-                {
-                  "key": "parameter_filters[0][parameter_id]",
-                  "value": "1",
-                  "description": "id of filter parameter"
-                },
-                {
-                  "key": "parameter_filters[0][value]",
-                  "value": "11",
-                  "description": "max value of filter parameter"
-                },
-                {
-                  "key": "account_office_type",
-                  "value": "PK"
-                },
-                {
-                  "key": "business_accounting",
-                  "value": "0"
+                  "description": "natural_person_jdg, legal_person_company",
+                  "disabled": true
                 },
                 {
                   "key": "supports_ryczałt",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 },
                 {
                   "key": "supports_kpir",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 },
                 {
                   "key": "supports_pk",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 },
                 {
                   "key": "calculates_payroll",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 },
                 {
                   "key": "supports_uod",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 },
                 {
                   "key": "supports_uz",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 },
                 {
                   "key": "does_foreign_operations",
-                  "value": "0"
-                },
-                {
-                  "key": "free_business_starter",
-                  "value": "0"
-                },
-                {
-                  "key": "secure_video_encryption",
-                  "value": "0"
-                },
-                {
-                  "key": "invoicing_program_included_price",
-                  "value": "0"
-                },
-                {
-                  "key": "online_document_archived_included",
-                  "value": "0"
+                  "value": "0",
+                  "disabled": true
                 }
               ]
             }

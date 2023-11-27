@@ -497,6 +497,11 @@ paths:
               example:
                 profile_slug: sam-billings
                 package_slug: basic
+                parameter_filters:
+                  - parameter_id: 1
+                    value: 10
+                  - parameter_id: 2
+                    value: 11
       security:
         - bearerAuth: []
       parameters:
@@ -551,9 +556,14 @@ paths:
             schema:
               type: object
               example:
-                profile_slug: bijay-niraula
-                package_slug: gold
-                company_slug: bijay-company
+                profile_slug: sinister-six
+                package_slug: basic
+                company_slug: bug-75-1
+                parameter_filters:
+                  - parameter_id: 1
+                    value: 10
+                  - parameter_id: 2
+                    value: 11
       security:
         - bearerAuth: []
       responses:
@@ -1066,6 +1076,11 @@ paths:
               example:
                 package_slug: basic
                 company_slug: second-comp-updated
+                parameter_filters:
+                  - parameter_id: 1
+                    value: 10
+                  - parameter_id: 2
+                    value: 11
       security:
         - bearerAuth: []
       parameters:
@@ -1885,99 +1900,46 @@ paths:
           schema:
             type: integer
           example: '10'
-        - name: branches[]
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: languages[]
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: legal_form
+        - name: parameter_filters[]
           in: query
           schema:
             type: string
-          description: natural_person_jdg, legal_person_company
-          example: natural_person_jdg
-        - name: parameter_filters[0][parameter_id]
-          in: query
-          schema:
-            type: integer
-          description: id of filter parameter
-          example: '1'
-        - name: parameter_filters[0][value]
-          in: query
-          schema:
-            type: integer
-          description: max value of filter parameter
-          example: '11'
+          example: '%7B%22parameter_id%22:1,%22value%22:0%7D'
         - name: account_office_type
           in: query
           schema:
             type: string
-          example: PK
+          example: rycza%C5%82t
         - name: business_accounting
           in: query
           schema:
             type: integer
-          example: '0'
-        - name: supports_ryczałt
+          example: '1'
+        - name: supports_rycza%C5%82t
           in: query
           schema:
             type: integer
-          example: '0'
-        - name: supports_kpir
-          in: query
-          schema:
-            type: integer
-          example: '0'
-        - name: supports_pk
-          in: query
-          schema:
-            type: integer
-          example: '0'
-        - name: calculates_payroll
-          in: query
-          schema:
-            type: integer
-          example: '0'
-        - name: supports_uod
-          in: query
-          schema:
-            type: integer
-          example: '0'
-        - name: supports_uz
-          in: query
-          schema:
-            type: integer
-          example: '0'
-        - name: does_foreign_operations
-          in: query
-          schema:
-            type: integer
-          example: '0'
+          example: '1'
         - name: free_business_starter
           in: query
           schema:
             type: integer
-          example: '0'
+          example: '1'
         - name: secure_video_encryption
           in: query
           schema:
             type: integer
-          example: '0'
+          example: '1'
         - name: invoicing_program_included_price
           in: query
           schema:
             type: integer
-          example: '0'
+          example: '1'
         - name: online_document_archived_included
           in: query
           schema:
             type: integer
-          example: '0'
+          example: '1'
       responses:
         '200':
           description: Successful response
