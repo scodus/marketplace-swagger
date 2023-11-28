@@ -3348,7 +3348,7 @@
                   "variable": [
                     {
                       "key": "company_slug",
-                      "value": "second-comp-otp"
+                      "value": "kamil-wodzinski"
                     }
                   ]
                 }
@@ -3549,7 +3549,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"New sample\",\n    \"type\":\"basic\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1,\n    \"accounting_office_type\":\"ryczałt\",\n    \"default_value\":10\n}",
+                  "raw": "{\n    \"title\":\"New random\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":1,\n    \"accounting_office_type\":\"ryczałt\",\n    \"accounting_office_types\":[\"ryczałt\"],\n    \"default_value\":10\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3581,7 +3581,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"title\":\"New sample\",\n    \"code\":\"ABC1234\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":0,\n    \"accounting_office_type\":\"PK\",\n    \"default_value\":11\n}",
+                  "raw": "{\n    \"title\":\"New random\",\n    \"code\":\"ABC123411\",\n    \"description\":\"abc def ghi\",\n    \"has_quantity\":1,\n    \"unit\": null,\n    \"price_level_1\":100,\n    \"price_level_2\":200,\n    \"price_level_3\":300,\n    \"is_filter\":1,\n    \"is_bool\":0,\n    \"accounting_office_type\":\"PK\",\n    \"accounting_office_types\":[\"kp\",\"ryczałt\"],\n    \"default_value\":11\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3595,7 +3595,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "new-sample"
+                      "value": "new-random"
                     }
                   ]
                 }
@@ -5380,100 +5380,131 @@
         {
           "name": "List Profiles",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 6,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 7,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 8,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 200\n        }\n    ],\n    \"account_office_type\": \"KPiR\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "{{url}}/api/v1/profiles?page=1&limit=10&parameter_filters[]=%7B%22parameter_id%22:1,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:2,%22value%22:2%7D&parameter_filters[]=%7B%22parameter_id%22:3,%22value%22:3%7D&parameter_filters[]=%7B%22parameter_id%22:4,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:5,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:6,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:7,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:8,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:9,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:10,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:11,%22value%22:0%7D&parameter_filters[]=%7B%22parameter_id%22:18,%22value%22:3%7D&parameter_filters[]=%7B%22parameter_id%22:%2217%22,%22value%22:%2212%22%7D&account_office_type=rycza%C5%82t&business_accounting=1&supports_rycza%C5%82t=1&free_business_starter=1&secure_video_encryption=1&invoicing_program_included_price=1&online_document_archived_included=1",
+              "raw": "{{url}}/api/v1/profiles",
               "host": ["{{url}}"],
               "path": ["api", "v1", "profiles"],
               "query": [
                 {
                   "key": "page",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "10"
+                  "value": "10",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:1,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:1,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:2,%22value%22:2%7D"
+                  "value": "%7B%22parameter_id%22:2,%22value%22:2%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:3,%22value%22:3%7D"
+                  "value": "%7B%22parameter_id%22:3,%22value%22:3%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:4,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:4,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:5,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:5,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:6,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:6,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:7,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:7,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:8,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:8,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:9,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:9,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:10,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:10,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:11,%22value%22:0%7D"
+                  "value": "%7B%22parameter_id%22:11,%22value%22:0%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:18,%22value%22:3%7D"
+                  "value": "%7B%22parameter_id%22:18,%22value%22:3%7D",
+                  "disabled": true
                 },
                 {
                   "key": "parameter_filters[]",
-                  "value": "%7B%22parameter_id%22:%2217%22,%22value%22:%2212%22%7D"
+                  "value": "%7B%22parameter_id%22:%2217%22,%22value%22:%2212%22%7D",
+                  "disabled": true
                 },
                 {
                   "key": "account_office_type",
-                  "value": "rycza%C5%82t"
+                  "value": "rycza%C5%82t",
+                  "disabled": true
                 },
                 {
                   "key": "business_accounting",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "supports_rycza%C5%82t",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "free_business_starter",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "secure_video_encryption",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "invoicing_program_included_price",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "online_document_archived_included",
-                  "value": "1"
+                  "value": "1",
+                  "disabled": true
                 },
                 {
                   "key": "branches[]",

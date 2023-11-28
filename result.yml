@@ -539,7 +539,7 @@ paths:
           schema:
             type: string
           required: true
-          example: second-comp-otp
+          example: kamil-wodzinski
       responses:
         '200':
           description: Successful response
@@ -672,8 +672,7 @@ paths:
             schema:
               type: object
               example:
-                title: New sample
-                type: basic
+                title: New random
                 code: ABC1234
                 description: abc def ghi
                 has_quantity: 1
@@ -684,6 +683,8 @@ paths:
                 is_filter: 1
                 is_bool: 1
                 accounting_office_type: ryczałt
+                accounting_office_types:
+                  - ryczałt
                 default_value: 10
       security:
         - bearerAuth: []
@@ -703,8 +704,8 @@ paths:
             schema:
               type: object
               example:
-                title: New sample
-                code: ABC1234
+                title: New random
+                code: ABC123411
                 description: abc def ghi
                 has_quantity: 1
                 unit: null
@@ -714,6 +715,9 @@ paths:
                 is_filter: 1
                 is_bool: 0
                 accounting_office_type: PK
+                accounting_office_types:
+                  - kp
+                  - ryczałt
                 default_value: 11
       security:
         - bearerAuth: []
@@ -723,7 +727,7 @@ paths:
           schema:
             type: string
           required: true
-          example: new-sample
+          example: new-random
       responses:
         '200':
           description: Successful response
@@ -1885,61 +1889,48 @@ paths:
           content:
             application/json: {}
   /api/v1/profiles:
-    get:
+    post:
       tags:
         - Public
       summary: List Profiles
-      parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '10'
-        - name: parameter_filters[]
-          in: query
-          schema:
-            type: string
-          example: '%7B%22parameter_id%22:1,%22value%22:0%7D'
-        - name: account_office_type
-          in: query
-          schema:
-            type: string
-          example: rycza%C5%82t
-        - name: business_accounting
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: supports_rycza%C5%82t
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: free_business_starter
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: secure_video_encryption
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: invoicing_program_included_price
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: online_document_archived_included
-          in: query
-          schema:
-            type: integer
-          example: '1'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                page: 1
+                limit: 10
+                branches: []
+                languages: []
+                parameter_filters:
+                  - parameter_id: 3
+                    value: 3
+                  - parameter_id: 4
+                    value: 0
+                  - parameter_id: 5
+                    value: 0
+                  - parameter_id: 6
+                    value: 0
+                  - parameter_id: 7
+                    value: 0
+                  - parameter_id: 8
+                    value: 0
+                  - parameter_id: 9
+                    value: 0
+                  - parameter_id: 10
+                    value: 0
+                  - parameter_id: 11
+                    value: 0
+                  - parameter_id: 2
+                    value: 200
+                account_office_type: KPiR
+                business_accounting: 1
+                supports_ryczałt: 1
+                free_business_starter: 1
+                secure_video_encryption: 1
+                invoicing_program_included_price: 1
+                online_document_archived_included: 1
       responses:
         '200':
           description: Successful response
