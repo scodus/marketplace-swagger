@@ -75,7 +75,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"email\"\n}",
+                  "raw": "{\n    \"email\":\"gibssmeeeeeg77173@cdeter.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2646,13 +2646,13 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?limit=10&page=1&name=&onboarding_status=new&process_status&handover_status",
+                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
                     {
                       "key": "limit",
-                      "value": "10"
+                      "value": "100"
                     },
                     {
                       "key": "page",
@@ -2664,7 +2664,7 @@
                     },
                     {
                       "key": "onboarding_status",
-                      "value": "new"
+                      "value": ""
                     },
                     {
                       "key": "process_status",
@@ -2711,7 +2711,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"third comp\",\n    \"short_name\":\"def\",\n    \"email\":\"thirdcompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"second user\",\n    \"user_email\":\"thirdusercompany@mail.com\"\n}",
+                  "raw": "{\n    \"name\":\"aaa comp\",\n    \"short_name\":\"def\",\n    \"email\":\"aacompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"aa user\",\n    \"user_email\":\"aacompany@mail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2749,7 +2749,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"third comp\",\n    \"short_name\":\"def\",\n    \"email\":\"thirdcompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142803\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 3\"\n    }\n}",
+                  "raw": "{\n    \"name\":\"aaa comp\",\n    \"short_name\":\"aaa\",\n    \"email\":\"aacompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142803\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 3\"\n    }\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2763,7 +2763,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "third-comp"
+                      "value": "aaa-comp"
                     }
                   ]
                 }
@@ -3460,7 +3460,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\": \"sam sith\",\n    \"user_email\": \"gibag77173@cdeter.com\",\n    \"role\": \"support\"\n}",
+                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmeeeeeg77173@cdeter.com\",\n    \"role\": \"support\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4474,6 +4474,82 @@
                       "value": "5"
                     }
                   ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Email template",
+          "item": [
+            {
+              "name": "List Templates",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/email-templates",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "email-templates"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Upsert Templates",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "type",
+                      "value": "user_verification",
+                      "type": "text"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "Verify your account",
+                      "type": "text"
+                    },
+                    {
+                      "key": "body",
+                      "value": "Hello [first_name]",
+                      "type": "text"
+                    },
+                    {
+                      "key": "attachment",
+                      "type": "file",
+                      "src": "/Users/bijay/Downloads/PID5988121.pdf"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/email-template",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "email-template"]
                 }
               },
               "response": []

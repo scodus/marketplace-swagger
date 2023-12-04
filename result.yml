@@ -33,6 +33,7 @@ tags:
   - name: Admin Dashboard > Packages
   - name: Admin Dashboard > Profiles
   - name: Admin Dashboard > Miscellaneous
+  - name: Admin Dashboard > Email template
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -91,7 +92,7 @@ paths:
             schema:
               type: object
               example:
-                email: email
+                email: gibssmeeeeeg77173@cdeter.com
       responses:
         '200':
           description: Successful response
@@ -234,7 +235,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '100'
         - name: page
           in: query
           schema:
@@ -248,7 +249,6 @@ paths:
           in: query
           schema:
             type: string
-          example: new
         - name: process_status
           in: query
           schema:
@@ -272,9 +272,9 @@ paths:
             schema:
               type: object
               example:
-                name: third comp
+                name: aaa comp
                 short_name: def
-                email: thirdcompany@mail.com
+                email: aacompany@mail.com
                 country_code: '+91'
                 phone_number: '2142802'
                 otp: '14607'
@@ -289,8 +289,8 @@ paths:
                   house_number: h 123
                   no_of_premises: pr 4
                   voivodeship: voivo 2
-                user_name: second user
-                user_email: thirdusercompany@mail.com
+                user_name: aa user
+                user_email: aacompany@mail.com
       security:
         - bearerAuth: []
       parameters:
@@ -315,12 +315,11 @@ paths:
             schema:
               type: object
               example:
-                name: third comp
-                short_name: def
-                email: thirdcompany@mail.com
+                name: aaa comp
+                short_name: aaa
+                email: aacompany@mail.com
                 country_code: '+91'
                 phone_number: '2142803'
-                otp: '14607'
                 addresses:
                   country: Poland
                   city: Warswa
@@ -345,7 +344,7 @@ paths:
           schema:
             type: string
           required: true
-          example: third-comp
+          example: aaa-comp
       responses:
         '200':
           description: Successful response
@@ -620,8 +619,8 @@ paths:
             schema:
               type: object
               example:
-                user_name: sam sith
-                user_email: gibag77173@cdeter.com
+                user_name: mail user
+                user_email: gibssmeeeeeg77173@cdeter.com
                 role: support
       security:
         - bearerAuth: []
@@ -1271,6 +1270,48 @@ paths:
             type: integer
           required: true
           example: '5'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/email-templates:
+    get:
+      tags:
+        - Admin Dashboard > Email template
+      summary: List Templates
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/email-template:
+    post:
+      tags:
+        - Admin Dashboard > Email template
+      summary: Upsert Templates
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: user_verification
+                subject:
+                  type: string
+                  example: Verify your account
+                body:
+                  type: string
+                  example: Hello [first_name]
+                attachment:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
