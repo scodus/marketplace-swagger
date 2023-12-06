@@ -97,7 +97,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"Cr9kGdy17HPpiTJnSzh8\"\n}",
+                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"MyyJgN03tPxlAY1SEvN6\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3460,7 +3460,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmeeeeeg77173@cdeter.com\",\n    \"role\": \"support\"\n}",
+                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmaag77173@cdeter.com\",\n    \"role\": \"support_leader\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3500,6 +3500,38 @@
                       "value": "6"
                     }
                   ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Assign Support Leader",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"support_user_id\":86,\n    \"support_leader_user_id\":88\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user-support-leader",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user-support-leader"]
                 }
               },
               "response": []
@@ -4550,6 +4582,83 @@
                   "raw": "{{url}}/api/admin/email-template",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "email-template"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add attachment",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "type",
+                      "value": "terms_and_condition",
+                      "type": "text"
+                    },
+                    {
+                      "key": "attachment",
+                      "type": "file",
+                      "src": "/Users/bijay/Downloads/A Machine Vision System Using a Laser Radar Applied to Robotic Fruit Harvesting.pdf"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/email-template-attachment",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "email-template-attachment"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add attachment Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/email-template-attachment/:attachment_type/:attachment_id",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "email-template-attachment",
+                    ":attachment_type",
+                    ":attachment_id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "attachment_type",
+                      "value": "terms_and_condition"
+                    },
+                    {
+                      "key": "attachment_id",
+                      "value": "6bab1b74-c458-494d-aa5b-2ecffcdfb6b3"
+                    }
+                  ]
                 }
               },
               "response": []

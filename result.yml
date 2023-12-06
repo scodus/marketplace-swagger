@@ -111,7 +111,7 @@ paths:
               example:
                 new_password: P@ssw0rd
                 new_password_confirmation: P@ssw0rd
-                token: Cr9kGdy17HPpiTJnSzh8
+                token: MyyJgN03tPxlAY1SEvN6
       responses:
         '200':
           description: Successful response
@@ -620,8 +620,8 @@ paths:
               type: object
               example:
                 user_name: mail user
-                user_email: gibssmeeeeeg77173@cdeter.com
-                role: support
+                user_email: gibssmaag77173@cdeter.com
+                role: support_leader
       security:
         - bearerAuth: []
       responses:
@@ -643,6 +643,26 @@ paths:
             type: integer
           required: true
           example: '6'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-support-leader:
+    put:
+      tags:
+        - Admin Dashboard > Users
+      summary: Assign Support Leader
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                support_user_id: 86
+                support_leader_user_id: 88
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -1312,6 +1332,55 @@ paths:
                   format: binary
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/email-template-attachment:
+    post:
+      tags:
+        - Admin Dashboard > Email template
+      summary: Add attachment
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  example: terms_and_condition
+                attachment:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/email-template-attachment/{attachment_type}/{attachment_id}:
+    delete:
+      tags:
+        - Admin Dashboard > Email template
+      summary: Add attachment Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: attachment_type
+          in: path
+          schema:
+            type: string
+          required: true
+          example: terms_and_condition
+        - name: attachment_id
+          in: path
+          schema:
+            type: string
+          required: true
+          example: 6bab1b74-c458-494d-aa5b-2ecffcdfb6b3
       responses:
         '200':
           description: Successful response
