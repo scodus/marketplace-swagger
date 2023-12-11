@@ -191,6 +191,54 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/account-office/{slug}:
+    put:
+      tags:
+        - Admin Dashboard > Account Office
+      summary: Create Account Office Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: office second
+                email: office_second@mail.com
+                short_name: office
+                tax_id: 12356
+                regon: 13456
+                bdo: 45677
+                pkd: pkd
+                krs: krs
+                www: www
+                is_tax_adviser: 1
+                is_current_review: 0
+                nr_mf: abc
+                phone_number: '123412'
+                addresses:
+                  country: Nepal
+                  city: Kathmandu
+                  zip: '9800'
+                  post: p1
+                  street: street 1
+                  district: district 1
+                  county: county 1
+                  house_number: h 123
+                  no_of_premises: pr 4
+                  voivodeship: voivo 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/accounting-office/{slug}/admin:
     put:
       tags:
@@ -213,6 +261,34 @@ paths:
             type: string
           required: true
           example: office-second
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting-office-ipdo/{slug}:
+    put:
+      tags:
+        - Admin Dashboard > Account Office
+      summary: IDPO Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                year: 2023
+                month: 12
+                ipdo: 10
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: laboris-consequuntur
       responses:
         '200':
           description: Successful response
@@ -1080,7 +1156,7 @@ paths:
           schema:
             type: string
           required: true
-          example: sam-billings
+          example: bipin-bhattarai
       responses:
         '200':
           description: Successful response

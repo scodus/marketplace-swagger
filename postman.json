@@ -191,6 +191,44 @@
               "response": []
             },
             {
+              "name": "Create Account Office Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"office second\",\n    \"email\":\"office_second@mail.com\",\n    \"short_name\":\"office\",\n    \"tax_id\":12356,\n    \"regon\":13456,\n    \"bdo\":45677,\n    \"pkd\":\"pkd\",\n    \"krs\":\"krs\",\n    \"www\":\"www\",\n    \"is_tax_adviser\":1,\n    \"is_current_review\":0,\n    \"nr_mf\":\"abc\",\n    \"phone_number\":\"123412\",\n    \"addresses\":{\n        \"country\":\"Nepal\",\n        \"city\":\"Kathmandu\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/account-office/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "account-office", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "Change Accounting Office Admin",
               "request": {
                 "auth": {
@@ -228,6 +266,44 @@
                     {
                       "key": "slug",
                       "value": "office-second"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "IDPO Update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"year\":2023,\n    \"month\":12,\n    \"ipdo\":10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/accounting-office-ipdo/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "accounting-office-ipdo", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "laboris-consequuntur"
                     }
                   ]
                 }
@@ -4171,7 +4247,7 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "sam-billings"
+                      "value": "bipin-bhattarai"
                     }
                   ]
                 }
