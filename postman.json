@@ -273,6 +273,53 @@
               "response": []
             },
             {
+              "name": "IDPO",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/accounting-office-ipdo/:slug?year=2023",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "accounting-office-ipdo", ":slug"],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "2023"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "laboris-consequuntur"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "IDPO Update",
               "request": {
                 "auth": {
@@ -306,6 +353,74 @@
                       "value": "laboris-consequuntur"
                     }
                   ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Export IPDO",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/accounting-office-ipdo-export",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "accounting-office-ipdo-export"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Import Ipdo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "ipdo_excel",
+                      "type": "file",
+                      "src": "/Users/bijay/Downloads/invoices.xlsx"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/accounting-office-ipdo-import",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "accounting-office-ipdo-import"]
                 }
               },
               "response": []
@@ -2722,7 +2837,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status",
+                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status&payment_status=",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
@@ -2749,6 +2864,10 @@
                     {
                       "key": "handover_status",
                       "value": null
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": ""
                     }
                   ]
                 }
