@@ -2837,7 +2837,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status&payment_status=",
+                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status&payment_status=NEW&profile_missing=0",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
@@ -2867,7 +2867,11 @@
                     },
                     {
                       "key": "payment_status",
-                      "value": ""
+                      "value": "NEW"
+                    },
+                    {
+                      "key": "profile_missing",
+                      "value": "0"
                     }
                   ]
                 }
@@ -2906,7 +2910,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"aaa comp\",\n    \"short_name\":\"def\",\n    \"email\":\"aacompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"aa user\",\n    \"user_email\":\"aacompany@mail.com\"\n}",
+                  "raw": "{\n    \"name\":\"new comp for session\",\n    \"short_name\":\"def\",\n    \"email\":\"sessioncompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"aa user\",\n    \"user_email\":\"sessioncompany@mail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3606,6 +3610,35 @@
                   "raw": "{{url}}/api/v1/paynow/payment-status",
                   "host": ["{{url}}"],
                   "path": ["api", "v1", "paynow", "payment-status"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Export Company Session",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/company-session-export?company_id=20",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-session-export"],
+                  "query": [
+                    {
+                      "key": "company_id",
+                      "value": "20"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -4704,6 +4737,105 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Create Consent",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"description\":\"def\",\n    \"is_required\":true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/consent",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "consent"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Consent",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"description\":\"defff\",\n    \"is_required\":true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/consent/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "consent", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Consent Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/consent/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "consent", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -5346,6 +5478,62 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Export Occupancy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/profiles-occupancy-export",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profiles-occupancy-export"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Export Occupancy Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "occupancy_excel",
+                      "type": "file",
+                      "src": "/Users/bijay/Downloads/profile.xlsx"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/profiles-occupancy-import",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profiles-occupancy-import"]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -5764,7 +5952,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 6,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 7,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 8,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 200\n        }\n    ],\n    \"account_office_type\": \"KPiR\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1\n}",
+              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 20\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 21,\n            \"value\": 1\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 5\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 5\n        }\n    ],\n    \"account_office_type\": \"KPiR\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -6005,6 +6193,22 @@
               "raw": "{{url}}/api/v1/parameters-filters",
               "host": ["{{url}}"],
               "path": ["api", "v1", "parameters-filters"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Consents",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/v1/consents",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "consents"]
             }
           },
           "response": []
