@@ -1653,7 +1653,7 @@ paths:
             schema:
               type: object
               example:
-                email: testOffice@gmail.com
+                email: lidolic329@inkiny.com
                 password: P@ssw0rd
       responses:
         '200':
@@ -1884,7 +1884,7 @@ paths:
             schema:
               type: object
               example:
-                accounting_office_id: '1'
+                accounting_office_id: '4'
                 name: sinister
                 surname: six
                 title: mr
@@ -1920,6 +1920,9 @@ paths:
                 online_document_archived_included: 1
                 active: 1
                 max_receivable: 10
+                remote_work: 1
+                cooperated_with_cd: here
+                insurance: 1
       security:
         - bearerAuth: []
       responses:
