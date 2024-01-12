@@ -5071,7 +5071,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"lidolic329@inkiny.com\",\n    \"password\":\"P@ssw0rd\"\n}",
+                  "raw": "{\n    \"email\":\"gorige4118@fesgrid.com\",\n    \"password\":\"P@ssw0rd\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5233,7 +5233,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/accounting/profiles?page=1&limit=10&name=",
+                  "raw": "{{url}}/api/accounting/profiles?page=1&limit=100&name=",
                   "host": ["{{url}}"],
                   "path": ["api", "accounting", "profiles"],
                   "query": [
@@ -5243,7 +5243,7 @@
                     },
                     {
                       "key": "limit",
-                      "value": "10"
+                      "value": "100"
                     },
                     {
                       "key": "name",
@@ -5531,6 +5531,44 @@
                   "raw": "{{url}}/api/accounting/profiles-occupancy-import",
                   "host": ["{{url}}"],
                   "path": ["api", "accounting", "profiles-occupancy-import"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Account Profile Admin",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"changed admin\",\n    \"email\":\"useraccountant2@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile/:slug/admin",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profile", ":slug", "admin"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "user-accountant"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -5952,7 +5990,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 20\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 21,\n            \"value\": 1\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 5\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 5\n        }\n    ],\n    \"account_office_type\": \"KPiR\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1\n}",
+              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 2,\n            \"value\": 2\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        }\n    ],\n    \"account_office_type\": \"ryczałt\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"

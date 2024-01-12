@@ -1653,7 +1653,7 @@ paths:
             schema:
               type: object
               example:
-                email: lidolic329@inkiny.com
+                email: gorige4118@fesgrid.com
                 password: P@ssw0rd
       responses:
         '200':
@@ -1785,7 +1785,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '100'
         - name: name
           in: query
           schema:
@@ -2048,6 +2048,33 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/profile/{slug}/admin:
+    put:
+      tags:
+        - AO Dashboard > Accountatnt Profile
+      summary: Update Account Profile Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: changed admin
+                email: useraccountant2@gmail.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: user-accountant
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/users:
     get:
       tags:
@@ -2275,25 +2302,21 @@ paths:
                 branches: []
                 languages: []
                 parameter_filters:
-                  - parameter_id: 1
-                    value: 0
                   - parameter_id: 2
-                    value: 20
+                    value: 2
                   - parameter_id: 3
                     value: 3
+                  - parameter_id: 4
+                    value: 0
+                  - parameter_id: 5
+                    value: 0
                   - parameter_id: 9
                     value: 0
                   - parameter_id: 10
                     value: 0
                   - parameter_id: 11
                     value: 0
-                  - parameter_id: 21
-                    value: 1
-                  - parameter_id: 4
-                    value: 5
-                  - parameter_id: 5
-                    value: 5
-                account_office_type: KPiR
+                account_office_type: ryczałt
                 business_accounting: 1
                 supports_ryczałt: 1
                 free_business_starter: 1
