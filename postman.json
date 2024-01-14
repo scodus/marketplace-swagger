@@ -3406,7 +3406,48 @@
                   "variable": [
                     {
                       "key": "slug",
-                      "value": "xyz"
+                      "value": "sint-exercitation-no"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Company Stage Status Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/company/:slug/status-history",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company",
+                    ":slug",
+                    "status-history"
+                  ],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "bijay-company"
                     }
                   ]
                 }

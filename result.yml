@@ -605,6 +605,30 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/company/{slug}/status-history:
+    get:
+      tags:
+        - Admin Dashboard > Company
+      summary: Change Company Stage Status Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: bijay-company
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/company-send-otp:
     post:
       tags:
