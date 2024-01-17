@@ -686,6 +686,37 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/company/{company_slug}/switchAccountant:
+    put:
+      tags:
+        - Admin Dashboard > Company
+      summary: Switch Accountant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                profile_slug: kamil-wodzinski
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: kamil-company
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/company/{company_slug}/assignedAccountant:
     get:
       tags:
@@ -721,9 +752,9 @@ paths:
             schema:
               type: object
               example:
-                profile_slug: sinister-six
-                package_slug: basic
-                company_slug: bug-75-1
+                profile_slug: kamil-wodzinski
+                package_slug: komfort-kpir
+                company_slug: maxime-voluptate-sit
                 parameter_filters:
                   - parameter_id: 1
                     value: 10
@@ -1677,7 +1708,7 @@ paths:
             schema:
               type: object
               example:
-                email: gorige4118@fesgrid.com
+                email: fetape7565@royalka.com
                 password: P@ssw0rd
       responses:
         '200':
@@ -2211,6 +2242,32 @@ paths:
       summary: Company Assignments
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company/{company_slug}/switchAccountant:
+    put:
+      tags:
+        - AO Dashboard > Company
+      summary: New Request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                profile_slug: testowy-jasiek
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: kamil-company
       responses:
         '200':
           description: Successful response

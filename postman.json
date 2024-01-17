@@ -191,6 +191,44 @@
               "response": []
             },
             {
+              "name": "Update Account office",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"office second\",\n    \"email\":\"office_second@mail.com\",\n    \"short_name\":\"office\",\n    \"tax_id\":12356,\n    \"regon\":13456,\n    \"bdo\":45677,\n    \"pkd\":\"pkd\",\n    \"krs\":\"krs\",\n    \"www\":\"www\",\n    \"is_tax_adviser\":1,\n    \"is_current_review\":0,\n    \"nr_mf\":\"abc\",\n    \"phone_number\":\"123412\",\n    \"addresses\":{\n        \"country\":\"Nepal\",\n        \"city\":\"Kathmandu\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/account-office/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "account-office", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "laboris-consequuntur"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "Create Account Office Copy",
               "request": {
                 "auth": {
@@ -3546,6 +3584,65 @@
               "response": []
             },
             {
+              "name": "Switch Accountant",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"profile_slug\":\"kamil-wodzinski\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company/:company_slug/switchAccountant",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company",
+                    ":company_slug",
+                    "switchAccountant"
+                  ],
+                  "variable": [
+                    {
+                      "key": "company_slug",
+                      "value": "kamil-company"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "View Accountant",
               "event": [
                 {
@@ -3612,7 +3709,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"profile_slug\":\"sinister-six\",\n    \"package_slug\":\"basic\",\n    \"company_slug\":\"bug-75-1\",\n    \"parameter_filters\":[\n        {\n            \"parameter_id\" : 1,\n            \"value\":10\n        },\n        {\n            \"parameter_id\":2,\n            \"value\":11\n        }\n    ]\n}",
+                  "raw": "{\n    \"profile_slug\":\"kamil-wodzinski\",\n    \"package_slug\":\"komfort-kpir\",\n    \"company_slug\":\"maxime-voluptate-sit\",\n    \"parameter_filters\":[\n        {\n            \"parameter_id\" : 1,\n            \"value\":10\n        },\n        {\n            \"parameter_id\":2,\n            \"value\":11\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5112,7 +5209,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"gorige4118@fesgrid.com\",\n    \"password\":\"P@ssw0rd\"\n}",
+                  "raw": "{\n    \"email\":\"fetape7565@royalka.com\",\n    \"password\":\"P@ssw0rd\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5865,6 +5962,50 @@
                     {
                       "key": "slug",
                       "value": "xyz"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"profile_slug\":\"testowy-jasiek\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/company/:company_slug/switchAccountant",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "company",
+                    ":company_slug",
+                    "switchAccountant"
+                  ],
+                  "variable": [
+                    {
+                      "key": "company_slug",
+                      "value": "kamil-company"
                     }
                   ]
                 }
