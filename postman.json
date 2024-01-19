@@ -5969,7 +5969,7 @@
               "response": []
             },
             {
-              "name": "New Request",
+              "name": "Switch Accountant",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -6001,6 +6001,41 @@
                     "company",
                     ":company_slug",
                     "switchAccountant"
+                  ],
+                  "variable": [
+                    {
+                      "key": "company_slug",
+                      "value": "kamil-company"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Assigned Accountant",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/company/:company_slug/assignedAccountant",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "company",
+                    ":company_slug",
+                    "assignedAccountant"
                   ],
                   "variable": [
                     {

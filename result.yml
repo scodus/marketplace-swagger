@@ -2251,7 +2251,7 @@ paths:
     put:
       tags:
         - AO Dashboard > Company
-      summary: New Request
+      summary: Switch Accountant
       requestBody:
         content:
           application/json:
@@ -2259,6 +2259,25 @@ paths:
               type: object
               example:
                 profile_slug: testowy-jasiek
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: kamil-company
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company/{company_slug}/assignedAccountant:
+    get:
+      tags:
+        - AO Dashboard > Company
+      summary: Assigned Accountant
       security:
         - bearerAuth: []
       parameters:
