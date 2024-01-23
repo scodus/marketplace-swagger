@@ -1879,71 +1879,11 @@ paths:
             schema:
               type: object
               example:
-                name: sinister
-                surname: six
-                title: mr
-                accountant_email: sinister.six@mail.com
-                phone: '+555432342'
-                experience: describe the experiences
-                city: ktm
-                postal_code: '44600'
-                list_branch_supported: abc
-                is_spzoo: true
-                is_dg: false
-                is_foundations: true
-                is_cooperatives: false
-                br_mf: abc
-                is_tax_advisor: true
-                is_fund_reviewer: false
-                keywords: abcs
-                max_occupancy: 11
-                legal_form: legal_person_company
-                branches: []
-                languages: []
-                business_accounting: 0
-                supports_ryczałt: 0
-                supports_kpir: 0
-                supports_pk: 0
-                calculates_payroll: 0
-                supports_uod: 0
-                supports_uz: 0
-                does_foreign_operations: 0
-                free_business_starter: 0
-                secure_video_encryption: 0
-                invoicing_program_included_price: 0
-                online_document_archived_included: 0
-                active: 0
-                max_receivable: 20
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: sinister-six
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/accounting/profile:
-    post:
-      tags:
-        - AO Dashboard > Accountatnt Profile
-      summary: Create Profile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
                 accounting_office_id: '4'
-                name: sinister
-                surname: six
+                name: default
+                surname: profile
                 title: mr
-                accountant_email: sinister.six@mail.com
+                accountant_email: default.profile@mail.com
                 phone: '+555432342'
                 experience: describe the experiences
                 city: ktm
@@ -1978,6 +1918,72 @@ paths:
                 remote_work: 1
                 cooperated_with_cd: here
                 insurance: 1
+                is_default: 0
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: default-profile
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profile:
+    post:
+      tags:
+        - AO Dashboard > Accountatnt Profile
+      summary: Create Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                accounting_office_id: '4'
+                name: default2
+                surname: profile2
+                title: mr
+                accountant_email: default.profile2@mail.com
+                phone: '+555432342'
+                experience: describe the experiences
+                city: ktm
+                postal_code: '44600'
+                list_branch_supported: abc
+                is_spzoo: true
+                is_dg: false
+                is_foundations: true
+                is_cooperatives: false
+                br_mf: abc
+                is_tax_advisor: true
+                is_fund_reviewer: false
+                keywords: abcs
+                max_occupancy: 11
+                legal_form: legal_person_company
+                branches: []
+                languages: []
+                business_accounting: 1
+                supports_ryczałt: 1
+                supports_kpir: 1
+                supports_pk: 1
+                calculates_payroll: 1
+                supports_uod: 1
+                supports_uz: 1
+                does_foreign_operations: 1
+                free_business_starter: 1
+                secure_video_encryption: 1
+                invoicing_program_included_price: 1
+                online_document_archived_included: 1
+                active: 1
+                max_receivable: 10
+                remote_work: 1
+                cooperated_with_cd: here
+                insurance: 1
+                is_default: 1
       security:
         - bearerAuth: []
       responses:
@@ -2423,6 +2429,7 @@ paths:
                 secure_video_encryption: 1
                 invoicing_program_included_price: 1
                 online_document_archived_included: 1
+                default_profile: 0
       responses:
         '200':
           description: Successful response
