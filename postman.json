@@ -97,7 +97,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"MyyJgN03tPxlAY1SEvN6\"\n}",
+                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"mePrlJpRo51qUzh2RQEd\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2875,7 +2875,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status&payment_status=NEW&profile_missing=0",
+                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status&payment_status=NEW&profile_missing=0&year=2024&month=2",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
@@ -2910,6 +2910,14 @@
                     {
                       "key": "profile_missing",
                       "value": "0"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2024"
+                    },
+                    {
+                      "key": "month",
+                      "value": "2"
                     }
                   ]
                 }
@@ -3685,7 +3693,7 @@
                   "variable": [
                     {
                       "key": "company_slug",
-                      "value": "kamil-wodzinski"
+                      "value": "kamil-company"
                     }
                   ]
                 }
@@ -3802,9 +3810,48 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/users",
+                  "raw": "{{url}}/api/admin/users?role=admin",
                   "host": ["{{url}}"],
-                  "path": ["api", "admin", "users"]
+                  "path": ["api", "admin", "users"],
+                  "query": [
+                    {
+                      "key": "role",
+                      "value": "admin"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "List Accounting Office Users",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/users-accounting?role=&accounting_office_id=4",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "users-accounting"],
+                  "query": [
+                    {
+                      "key": "role",
+                      "value": ""
+                    },
+                    {
+                      "key": "accounting_office_id",
+                      "value": "4"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -3837,6 +3884,44 @@
                   "raw": "{{url}}/api/admin/user",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "user"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update User",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmaag77173@cdeter.com\",\n    \"role\": \"support_leader\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "41"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -4947,7 +5032,7 @@
               "response": []
             },
             {
-              "name": "Update Consent Copy",
+              "name": "Delete Consent",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -4969,6 +5054,134 @@
                     {
                       "key": "id",
                       "value": "2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "List Promotions",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/promotions?name=",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "promotions"],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Promotion",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"abc promo\",\n    \"valid_from\":\"2023-11-22\",\n    \"valid_to\":\"2023-11-23\",\n    \"promotional_price\":20,\n    \"description\":\"aaa\",\n    \"no_of_months\":1,\n    \"archived\":1,\n    \"package_id\":1,\n    \"external_id\":\"id from cd\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/promotion",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "promotion"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Promotion",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"abc promo\",\n    \"valid_from\":\"2023-11-22\",\n    \"valid_to\":\"2023-11-23\",\n    \"promotional_price\":20,\n    \"description\":\"aaa\",\n    \"no_of_months\":1,\n    \"archived\":1,\n    \"package_id\":1,\n    \"external_id\":\"id from cd\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/promotion/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "promotion", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Promotion",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/promotion/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "promotion", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": ""
                     }
                   ]
                 }
@@ -5023,23 +5236,24 @@
                   "formdata": [
                     {
                       "key": "type",
-                      "value": "user_verification",
+                      "value": "switch_accountant",
                       "type": "text"
                     },
                     {
                       "key": "subject",
-                      "value": "Verify your account",
+                      "value": "Switched accountant verification",
                       "type": "text"
                     },
                     {
                       "key": "body",
-                      "value": "Hello [first_name]",
+                      "value": "Hello, your accountant has been switched from [old_accountant_name] [old_accountant_surname] to [accountant_name] [accountant_surname]. <br> Thank you.",
                       "type": "text"
                     },
                     {
                       "key": "attachment",
                       "type": "file",
-                      "src": "/Users/bijay/Downloads/PID5988121.pdf"
+                      "src": "/Users/bijay/Downloads/PID5988121.pdf",
+                      "disabled": true
                     }
                   ]
                 },
@@ -5438,7 +5652,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"accounting_office_id\": \"4\",\n    \"name\": \"default2\",\n    \"surname\": \"profile2\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"default.profile2@mail.com\",\n    \"phone\": \"+555432342\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"max_occupancy\": 11,\n    \"legal_form\": \"legal_person_company\",\n    \"branches\": [],\n    \"languages\": [],\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"supports_kpir\": 1,\n    \"supports_pk\": 1,\n    \"calculates_payroll\": 1,\n    \"supports_uod\": 1,\n    \"supports_uz\": 1,\n    \"does_foreign_operations\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1,\n    \"active\": 1,\n    \"max_receivable\": 10,\n    \"remote_work\": 1,\n    \"cooperated_with_cd\": \"here\",\n    \"insurance\": 1,\n    \"is_default\": 1\n}",
+                  "raw": "{\n    \"accounting_office_id\": \"4\",\n    \"name\": \"default2\",\n    \"surname\": \"profile2\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"ridem89026@ikuromi.com\",\n    \"phone\": \"+555432342\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"max_occupancy\": 11,\n    \"legal_form\": \"legal_person_company\",\n    \"branches\": [],\n    \"languages\": [],\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"supports_kpir\": 1,\n    \"supports_pk\": 1,\n    \"calculates_payroll\": 1,\n    \"supports_uod\": 1,\n    \"supports_uz\": 1,\n    \"does_foreign_operations\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1,\n    \"active\": 1,\n    \"max_receivable\": 10,\n    \"remote_work\": 1,\n    \"cooperated_with_cd\": \"here\",\n    \"insurance\": 1,\n    \"is_default\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"

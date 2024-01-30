@@ -111,7 +111,7 @@ paths:
               example:
                 new_password: P@ssw0rd
                 new_password_confirmation: P@ssw0rd
-                token: MyyJgN03tPxlAY1SEvN6
+                token: mePrlJpRo51qUzh2RQEd
       responses:
         '200':
           description: Successful response
@@ -399,6 +399,16 @@ paths:
           schema:
             type: integer
           example: '0'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2024'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -735,7 +745,7 @@ paths:
           schema:
             type: string
           required: true
-          example: kamil-wodzinski
+          example: kamil-company
       responses:
         '200':
           description: Successful response
@@ -818,6 +828,34 @@ paths:
       summary: List Users
       security:
         - bearerAuth: []
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+          example: admin
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/users-accounting:
+    get:
+      tags:
+        - Admin Dashboard > Users
+      summary: List Accounting Office Users
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+        - name: accounting_office_id
+          in: query
+          schema:
+            type: integer
+          example: '4'
       responses:
         '200':
           description: Successful response
@@ -839,6 +877,34 @@ paths:
                 role: support_leader
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{id}:
+    put:
+      tags:
+        - Admin Dashboard > Users
+      summary: Update User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_name: mail user
+                user_email: gibssmaag77173@cdeter.com
+                role: support_leader
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '41'
       responses:
         '200':
           description: Successful response
@@ -1560,7 +1626,7 @@ paths:
     delete:
       tags:
         - Admin Dashboard > Miscellaneous
-      summary: Update Consent Copy
+      summary: Delete Consent
       security:
         - bearerAuth: []
       parameters:
@@ -1570,6 +1636,100 @@ paths:
             type: integer
           required: true
           example: '2'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/promotions:
+    get:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: List Promotions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/promotion:
+    post:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Create Promotion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: abc promo
+                valid_from: '2023-11-22'
+                valid_to: '2023-11-23'
+                promotional_price: 20
+                description: aaa
+                no_of_months: 1
+                archived: 1
+                package_id: 1
+                external_id: id from cd
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/promotion/{slug}:
+    put:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Update Promotion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: abc promo
+                valid_from: '2023-11-22'
+                valid_to: '2023-11-23'
+                promotional_price: 20
+                description: aaa
+                no_of_months: 1
+                archived: 1
+                package_id: 1
+                external_id: id from cd
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin Dashboard > Miscellaneous
+      summary: Delete Promotion
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -1600,13 +1760,16 @@ paths:
               properties:
                 type:
                   type: string
-                  example: user_verification
+                  example: switch_accountant
                 subject:
                   type: string
-                  example: Verify your account
+                  example: Switched accountant verification
                 body:
                   type: string
-                  example: Hello [first_name]
+                  example: >-
+                    Hello, your accountant has been switched from
+                    [old_accountant_name] [old_accountant_surname] to
+                    [accountant_name] [accountant_surname]. <br> Thank you.
                 attachment:
                   type: string
                   format: binary
@@ -1948,7 +2111,7 @@ paths:
                 name: default2
                 surname: profile2
                 title: mr
-                accountant_email: default.profile2@mail.com
+                accountant_email: ridem89026@ikuromi.com
                 phone: '+555432342'
                 experience: describe the experiences
                 city: ktm
@@ -1983,7 +2146,7 @@ paths:
                 remote_work: 1
                 cooperated_with_cd: here
                 insurance: 1
-                is_default: 1
+                is_default: 0
       security:
         - bearerAuth: []
       responses:
