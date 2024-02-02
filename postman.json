@@ -3873,7 +3873,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmaag77173@cdeter.com\",\n    \"role\": \"support_leader\"\n}",
+                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmaag77173@cdeter.com\",\n    \"role\": \"support_leader\",\n    \"consultant_group_id\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3905,7 +3905,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmaag77173@cdeter.com\",\n    \"role\": \"support_leader\"\n}",
+                  "raw": "{\n    \"user_name\": \"mail user\",\n    \"user_email\": \"gibssmaag77173@cdeter.com\",\n    \"role\": \"support_leader\",\n    \"consultant_group_id\":1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5336,6 +5336,133 @@
                     {
                       "key": "attachment_id",
                       "value": "6bab1b74-c458-494d-aa5b-2ecffcdfb6b3"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Consultant Group",
+          "item": [
+            {
+              "name": "List consultant group",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/user-consultant-group",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user-consultant-group"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create consultant group",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"group 2\",\n    \"description\":\"description 2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user-consultant-group",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user-consultant-group"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update consultant group",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"group 2\",\n    \"description\":\"description 2 update\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user-consultant-group/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user-consultant-group", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "group-2"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update consultant group Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/user-consultant-group/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user-consultant-group", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "group-2"
                     }
                   ]
                 }

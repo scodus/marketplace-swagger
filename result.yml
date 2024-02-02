@@ -34,6 +34,7 @@ tags:
   - name: Admin Dashboard > Profiles
   - name: Admin Dashboard > Miscellaneous
   - name: Admin Dashboard > Email template
+  - name: Admin Dashboard > Consultant Group
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -875,6 +876,7 @@ paths:
                 user_name: mail user
                 user_email: gibssmaag77173@cdeter.com
                 role: support_leader
+                consultant_group_id: 1
       security:
         - bearerAuth: []
       responses:
@@ -896,6 +898,7 @@ paths:
                 user_name: mail user
                 user_email: gibssmaag77173@cdeter.com
                 role: support_leader
+                consultant_group_id: 1
       security:
         - bearerAuth: []
       parameters:
@@ -1824,6 +1827,82 @@ paths:
             type: string
           required: true
           example: 6bab1b74-c458-494d-aa5b-2ecffcdfb6b3
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-consultant-group:
+    get:
+      tags:
+        - Admin Dashboard > Consultant Group
+      summary: List consultant group
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin Dashboard > Consultant Group
+      summary: Create consultant group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: group 2
+                description: description 2
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-consultant-group/{slug}:
+    put:
+      tags:
+        - Admin Dashboard > Consultant Group
+      summary: Update consultant group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: group 2
+                description: description 2 update
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: group-2
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin Dashboard > Consultant Group
+      summary: Update consultant group Copy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: group-2
       responses:
         '200':
           description: Successful response
