@@ -42,6 +42,7 @@ tags:
   - name: AO Dashboard > Users
   - name: AO Dashboard > Package
   - name: AO Dashboard > Company
+  - name: AO Dashboard > Company Note
   - name: Marketplace
   - name: Marketplace > Auth
   - name: Public
@@ -927,7 +928,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '6'
+          example: '9'
       responses:
         '200':
           description: Successful response
@@ -2562,6 +2563,89 @@ paths:
             type: string
           required: true
           example: kamil-company
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company-note/{companySlug}:
+    get:
+      tags:
+        - AO Dashboard > Company Note
+      summary: List Notes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: companySlug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: kamil-company
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company-note:
+    post:
+      tags:
+        - AO Dashboard > Company Note
+      summary: Create Note
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_slug: kamil-company
+                content: note content 2
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company-note/{noteId}:
+    put:
+      tags:
+        - AO Dashboard > Company Note
+      summary: Create Note Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                content: note content 1 edit
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: noteId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - AO Dashboard > Company Note
+      summary: Create Note Copy 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: noteId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
       responses:
         '200':
           description: Successful response
