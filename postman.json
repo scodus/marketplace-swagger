@@ -3717,7 +3717,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"profile_slug\":\"kamil-wodzinski\",\n    \"package_slug\":\"komfort-kpir\",\n    \"company_slug\":\"maxime-voluptate-sit\",\n    \"promotion_id\":1,\n    \"parameter_filters\":[\n        {\n            \"parameter_id\" : 1,\n            \"value\":10\n        },\n        {\n            \"parameter_id\":2,\n            \"value\":11\n        }\n    ]\n}",
+                  "raw": "{\n    \"profile_slug\": \"halina-ksiegowa\",\n    \"package_slug\": \"komfort-kpir\",\n    \"company_slug\": \"bug-test-promotion\",\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 2\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        }\n    ],\n    \"promotion_id\": 5\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3788,6 +3788,29 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Export Company Table",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/company-table-export",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-table-export"]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -3810,13 +3833,18 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/users?role=admin",
+                  "raw": "{{url}}/api/admin/users?support_leader_id=9",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "users"],
                   "query": [
                     {
                       "key": "role",
-                      "value": "admin"
+                      "value": "admin",
+                      "disabled": true
+                    },
+                    {
+                      "key": "support_leader_id",
+                      "value": "9"
                     }
                   ]
                 }
@@ -4561,7 +4589,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/profiles",
+                  "raw": "{{url}}/api/admin/profiles?is_default=true",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "profiles"],
                   "query": [
@@ -4594,6 +4622,10 @@
                       "key": "name",
                       "value": "",
                       "disabled": true
+                    },
+                    {
+                      "key": "is_default",
+                      "value": "true"
                     }
                   ]
                 }
@@ -5645,7 +5677,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"token\"\n}",
+                  "raw": "{\n    \"new_password\":\"P@ssw0rd\",\n    \"new_password_confirmation\":\"P@ssw0rd\",\n    \"token\":\"St6D6jyhMAXZq7XYr9FZ\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6126,7 +6158,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"radom.user@sparkroi.com\"\n}",
+                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"radom.user3@sparkroi.com\",\n    \"role\":\"accountant_leader\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6164,6 +6196,134 @@
                     {
                       "key": "user_id",
                       "value": "7"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Leader Assigned Profiles",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/user/leader-assigned/:accountLeaderId",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "user",
+                    "leader-assigned",
+                    ":accountLeaderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "accountLeaderId",
+                      "value": "147"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Leader Assign Profile",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"profile_slug\":\"kamil-wodzinski\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/user/leader-assign/:accountLeaderId",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "user",
+                    "leader-assign",
+                    ":accountLeaderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "accountLeaderId",
+                      "value": "147"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Leader Assign Profile Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"profile_slug\":\"kamil-wodzinski\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/user/leader-assign/:accountLeaderId/:profileSlug",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "user",
+                    "leader-assign",
+                    ":accountLeaderId",
+                    ":profileSlug"
+                  ],
+                  "variable": [
+                    {
+                      "key": "accountLeaderId",
+                      "value": "147"
+                    },
+                    {
+                      "key": "profileSlug",
+                      "value": "kamil-wodzinski"
                     }
                   ]
                 }
