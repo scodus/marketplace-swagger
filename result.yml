@@ -43,6 +43,7 @@ tags:
   - name: AO Dashboard > Package
   - name: AO Dashboard > Company
   - name: AO Dashboard > Company Note
+  - name: AO Dashboard > Company Assignment
   - name: Marketplace
   - name: Marketplace > Auth
   - name: Public
@@ -365,25 +366,17 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '100'
         - name: page
           in: query
           schema:
             type: integer
           example: '1'
-        - name: name
+        - name: limit
           in: query
           schema:
-            type: string
+            type: integer
+          example: '50'
         - name: onboarding_status
-          in: query
-          schema:
-            type: string
-        - name: process_status
           in: query
           schema:
             type: string
@@ -391,11 +384,22 @@ paths:
           in: query
           schema:
             type: string
+        - name: process_status
+          in: query
+          schema:
+            type: string
         - name: payment_status
           in: query
           schema:
             type: string
-          example: NEW
+        - name: created_by
+          in: query
+          schema:
+            type: string
+        - name: name
+          in: query
+          schema:
+            type: string
         - name: profile_missing
           in: query
           schema:
@@ -410,7 +414,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '2'
+          example: '02'
       responses:
         '200':
           description: Successful response
@@ -426,12 +430,13 @@ paths:
             schema:
               type: object
               example:
-                name: new comp for session
+                name: new comp for ceidg status
                 short_name: def
-                email: sessioncompany@mail.com
+                email: ceidgstatuscheck@mail.com
                 country_code: '+91'
                 phone_number: '2142802'
                 otp: '14607'
+                tax_id: '9151680204'
                 addresses:
                   country: Poland
                   city: Warswa
@@ -443,8 +448,8 @@ paths:
                   house_number: h 123
                   no_of_premises: pr 4
                   voivodeship: voivo 2
-                user_name: aa user
-                user_email: sessioncompany@mail.com
+                user_name: bb user
+                user_email: ceidgstatuscheck@mail.com
       security:
         - bearerAuth: []
       parameters:
@@ -764,27 +769,25 @@ paths:
             schema:
               type: object
               example:
-                profile_slug: halina-ksiegowa
-                package_slug: komfort-kpir
-                company_slug: bug-test-promotion
+                profile_slug: katarzyna-kowalska
+                package_slug: rs-kpir
+                company_slug: test-simulation-table-final
                 parameter_filters:
                   - parameter_id: 1
                     value: 0
-                  - parameter_id: 2
-                    value: 2
                   - parameter_id: 3
                     value: 3
-                  - parameter_id: 4
-                    value: 0
-                  - parameter_id: 5
-                    value: 0
                   - parameter_id: 9
-                    value: 0
-                  - parameter_id: 10
                     value: 0
                   - parameter_id: 11
                     value: 0
-                promotion_id: 5
+                  - parameter_id: 2
+                    value: 12
+                  - parameter_id: '10'
+                    value: 1
+                  - parameter_id: 4
+                    value: 20
+                promotion_id: null
       security:
         - bearerAuth: []
       responses:
@@ -843,6 +846,49 @@ paths:
       summary: Export Company Table
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-ceidg-import/{nip}:
+    get:
+      tags:
+        - Admin Dashboard
+      summary: Company Import
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: nip
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '9151680204'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-ceidg-update/{nip}:
+    get:
+      tags:
+        - Admin Dashboard > Company
+      summary: Company CEIDG Update
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company_cd_update
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: nip
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '5221210307'
       responses:
         '200':
           description: Successful response
@@ -939,6 +985,33 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/user-accounting/{id}:
+    put:
+      tags:
+        - Admin Dashboard > Users
+      summary: Update Accounting User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                user_name: Kamil edit
+                user_email: fetape7565@royalka.com
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '23'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/user/{user_id}:
     delete:
       tags:
@@ -953,6 +1026,32 @@ paths:
             type: integer
           required: true
           example: '9'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-accounting-status/{user_id}:
+    put:
+      tags:
+        - Admin Dashboard > Users
+      summary: Change Accounting User Status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '23'
       responses:
         '200':
           description: Successful response
@@ -1869,7 +1968,7 @@ paths:
     delete:
       tags:
         - Admin Dashboard > Email template
-      summary: Add attachment Copy
+      summary: Delete Attachment
       security:
         - bearerAuth: []
       parameters:
@@ -1884,7 +1983,7 @@ paths:
           schema:
             type: string
           required: true
-          example: 6bab1b74-c458-494d-aa5b-2ecffcdfb6b3
+          example: ae2773fa-66d6-4fbd-a9fe-ff8d2175cad5
       responses:
         '200':
           description: Successful response
@@ -1978,20 +2077,20 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/company-ceidg-import/{nip}:
-    get:
+  /api/v1/auto-seed:
+    post:
       tags:
         - Admin Dashboard
-      summary: Company Import
+      summary: Auto Seed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                seed_class: \Modules\Status\Database\Seeders\StatusDatabaseSeeder
       security:
         - bearerAuth: []
-      parameters:
-        - name: nip
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '9151680204'
       responses:
         '200':
           description: Successful response
@@ -2145,6 +2244,11 @@ paths:
           in: query
           schema:
             type: string
+        - name: package_id
+          in: query
+          schema:
+            type: integer
+          example: '2'
       responses:
         '200':
           description: Successful response
@@ -2606,7 +2710,46 @@ paths:
           in: query
           schema:
             type: integer
-          example: '10'
+          example: '50'
+        - name: onboarding_status
+          in: query
+          schema:
+            type: string
+        - name: handover_status
+          in: query
+          schema:
+            type: string
+        - name: process_status
+          in: query
+          schema:
+            type: string
+        - name: payment_status
+          in: query
+          schema:
+            type: string
+        - name: created_by
+          in: query
+          schema:
+            type: string
+        - name: name
+          in: query
+          schema:
+            type: string
+        - name: profile_missing
+          in: query
+          schema:
+            type: integer
+          example: '0'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2024'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '02'
       responses:
         '200':
           description: Successful response
@@ -2615,8 +2758,8 @@ paths:
   /api/accounting/profile-company-assigned:
     get:
       tags:
-        - AO Dashboard > Company
-      summary: Company Assignments
+        - AO Dashboard > Company Assignment
+      summary: Profile Assigned Companies
       security:
         - bearerAuth: []
       responses:
@@ -2669,6 +2812,25 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/company-consents/{companySlug}:
+    get:
+      tags:
+        - AO Dashboard > Company
+      summary: Company Consents
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: companySlug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: qui-obcaecati-et-qui
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/company-note/{companySlug}:
     get:
       tags:
@@ -2700,7 +2862,8 @@ paths:
               type: object
               example:
                 company_slug: kamil-company
-                content: note content 2
+                content: note email content 2
+                note_type: phone_call
       security:
         - bearerAuth: []
       responses:
@@ -2712,13 +2875,14 @@ paths:
     put:
       tags:
         - AO Dashboard > Company Note
-      summary: Create Note Copy
+      summary: Update Note
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
+                note_type: email
                 content: note content 1 edit
       security:
         - bearerAuth: []
@@ -2737,7 +2901,7 @@ paths:
     delete:
       tags:
         - AO Dashboard > Company Note
-      summary: Create Note Copy 2
+      summary: Delete Note
       security:
         - bearerAuth: []
       parameters:
@@ -2747,6 +2911,18 @@ paths:
             type: integer
           required: true
           example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/profile-company-assigned/export:
+    get:
+      tags:
+        - AO Dashboard > Company Assignment
+      summary: Export Profile Assigned Companies
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -2862,28 +3038,27 @@ paths:
                 branches: []
                 languages: []
                 parameter_filters:
+                  - parameter_id: 1
+                    value: 0
                   - parameter_id: 2
                     value: 2
                   - parameter_id: 3
                     value: 3
                   - parameter_id: 4
                     value: 0
-                  - parameter_id: 5
-                    value: 0
                   - parameter_id: 9
-                    value: 0
-                  - parameter_id: 10
                     value: 0
                   - parameter_id: 11
                     value: 0
-                account_office_type: ryczałt
+                  - parameter_id: '10'
+                    value: 1
+                account_office_type: KPiR
                 business_accounting: 1
                 supports_ryczałt: 1
                 free_business_starter: 1
                 secure_video_encryption: 1
                 invoicing_program_included_price: 1
                 online_document_archived_included: 1
-                default_profile: 0
       responses:
         '200':
           description: Successful response

@@ -2875,37 +2875,41 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?limit=100&page=1&name=&onboarding_status=&process_status&handover_status&payment_status=NEW&profile_missing=0&year=2024&month=2",
+                  "raw": "{{url}}/api/admin/company?page=1&limit=50&onboarding_status=&handover_status=&process_status=&payment_status=&created_by=&name=&profile_missing=0&year=2024&month=02",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
-                    {
-                      "key": "limit",
-                      "value": "100"
-                    },
                     {
                       "key": "page",
                       "value": "1"
                     },
                     {
-                      "key": "name",
-                      "value": ""
+                      "key": "limit",
+                      "value": "50"
                     },
                     {
                       "key": "onboarding_status",
                       "value": ""
                     },
                     {
-                      "key": "process_status",
-                      "value": null
+                      "key": "handover_status",
+                      "value": ""
                     },
                     {
-                      "key": "handover_status",
-                      "value": null
+                      "key": "process_status",
+                      "value": ""
                     },
                     {
                       "key": "payment_status",
-                      "value": "NEW"
+                      "value": ""
+                    },
+                    {
+                      "key": "created_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "name",
+                      "value": ""
                     },
                     {
                       "key": "profile_missing",
@@ -2917,7 +2921,7 @@
                     },
                     {
                       "key": "month",
-                      "value": "2"
+                      "value": "02"
                     }
                   ]
                 }
@@ -2956,7 +2960,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"new comp for session\",\n    \"short_name\":\"def\",\n    \"email\":\"sessioncompany@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"aa user\",\n    \"user_email\":\"sessioncompany@mail.com\"\n}",
+                  "raw": "{\n    \"name\":\"new comp for ceidg status\",\n    \"short_name\":\"def\",\n    \"email\":\"ceidgstatuscheck@mail.com\",\n    \"country_code\":\"+91\",\n    \"phone_number\":\"2142802\",\n    \"otp\":\"14607\",\n    \"tax_id\":\"9151680204\",\n    \"addresses\":{\n        \"country\":\"Poland\",\n        \"city\":\"Warswa\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"bb user\",\n    \"user_email\":\"ceidgstatuscheck@mail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3717,7 +3721,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"profile_slug\": \"halina-ksiegowa\",\n    \"package_slug\": \"komfort-kpir\",\n    \"company_slug\": \"bug-test-promotion\",\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 2\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        }\n    ],\n    \"promotion_id\": 5\n}",
+                  "raw": "{\n    \"profile_slug\": \"katarzyna-kowalska\",\n    \"package_slug\": \"rs-kpir\",\n    \"company_slug\": \"test-simulation-table-final\",\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 12\n        },\n        {\n            \"parameter_id\": \"10\",\n            \"value\": 1\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 20\n        }\n    ],\n    \"promotion_id\": null\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3808,6 +3812,70 @@
                   "raw": "{{url}}/api/admin/company-table-export",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company-table-export"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Company CEIDG Import",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/company-ceidg-import/:nip",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-ceidg-import", ":nip"],
+                  "variable": [
+                    {
+                      "key": "nip",
+                      "value": "5221210307"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Company CEIDG Update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/company-ceidg-update/:nip?company_cd_update=1",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-ceidg-update", ":nip"],
+                  "query": [
+                    {
+                      "key": "company_cd_update",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "nip",
+                      "value": "5221210307"
+                    }
+                  ]
                 }
               },
               "response": []
@@ -3955,6 +4023,44 @@
               "response": []
             },
             {
+              "name": "Update Accounting User",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_name\": \"Kamil edit\",\n    \"user_email\": \"fetape7565@royalka.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user-accounting/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "user-accounting", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "23"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "Remove User",
               "request": {
                 "auth": {
@@ -3977,6 +4083,49 @@
                     {
                       "key": "user_id",
                       "value": "9"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change Accounting User Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\":1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user-accounting-status/:user_id",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "user-accounting-status",
+                    ":user_id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "user_id",
+                      "value": "23"
                     }
                   ]
                 }
@@ -5352,7 +5501,7 @@
                     {
                       "key": "attachment",
                       "type": "file",
-                      "src": "/Users/bijay/Downloads/A Machine Vision System Using a Laser Radar Applied to Robotic Fruit Harvesting.pdf"
+                      "src": "/Users/bijay/Downloads/SampleDocs-Test PDF File With Dummy Data For Testing.pdf"
                     }
                   ]
                 },
@@ -5365,7 +5514,7 @@
               "response": []
             },
             {
-              "name": "Add attachment Copy",
+              "name": "Delete Attachment",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -5396,7 +5545,7 @@
                     },
                     {
                       "key": "attachment_id",
-                      "value": "6bab1b74-c458-494d-aa5b-2ecffcdfb6b3"
+                      "value": "ae2773fa-66d6-4fbd-a9fe-ff8d2175cad5"
                     }
                   ]
                 }
@@ -5580,6 +5729,38 @@
                   "value": "9151680204"
                 }
               ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Auto Seed",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{admin_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"seed_class\":\"\\\\Modules\\\\Status\\\\Database\\\\Seeders\\\\StatusDatabaseSeeder\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/v1/auto-seed",
+              "host": ["{{url}}"],
+              "path": ["api", "v1", "auto-seed"]
             }
           },
           "response": []
@@ -5773,7 +5954,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/accounting/profiles?page=1&limit=100&name=",
+                  "raw": "{{url}}/api/accounting/profiles?page=1&limit=100&name=&package_id=2",
                   "host": ["{{url}}"],
                   "path": ["api", "accounting", "profiles"],
                   "query": [
@@ -5788,6 +5969,10 @@
                     {
                       "key": "name",
                       "value": ""
+                    },
+                    {
+                      "key": "package_id",
+                      "value": "2"
                     }
                   ]
                 }
@@ -6408,7 +6593,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/accounting/companies?page=1&limit=10",
+                  "raw": "{{url}}/api/accounting/companies?page=1&limit=50&onboarding_status=&handover_status=&process_status=&payment_status=&created_by=&name=&profile_missing=0&year=2024&month=02",
                   "host": ["{{url}}"],
                   "path": ["api", "accounting", "companies"],
                   "query": [
@@ -6418,7 +6603,43 @@
                     },
                     {
                       "key": "limit",
-                      "value": "10"
+                      "value": "50"
+                    },
+                    {
+                      "key": "onboarding_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "handover_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "process_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "name",
+                      "value": ""
+                    },
+                    {
+                      "key": "profile_missing",
+                      "value": "0"
+                    },
+                    {
+                      "key": "year",
+                      "value": "2024"
+                    },
+                    {
+                      "key": "month",
+                      "value": "02"
                     }
                   ]
                 }
@@ -6576,6 +6797,40 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Company Consents",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/company-consents/:companySlug",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "company-consents",
+                    ":companySlug"
+                  ],
+                  "variable": [
+                    {
+                      "key": "companySlug",
+                      "value": "qui-obcaecati-et-qui"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -6628,7 +6883,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"company_slug\":\"kamil-company\",\n    \"content\":\"note content 2\"\n}",
+                  "raw": "{\n    \"company_slug\":\"kamil-company\",\n    \"content\":\"note email content 2\",\n    \"note_type\":\"phone_call\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6644,7 +6899,7 @@
               "response": []
             },
             {
-              "name": "Create Note Copy",
+              "name": "Update Note",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -6660,7 +6915,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"content\":\"note content 1 edit\"\n}",
+                  "raw": "{\n    \"note_type\":\"email\",\n    \"content\":\"note content 1 edit\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6682,7 +6937,7 @@
               "response": []
             },
             {
-              "name": "Create Note Copy 2",
+              "name": "Delete Note",
               "request": {
                 "auth": {
                   "type": "bearer",
@@ -6705,6 +6960,62 @@
                       "key": "noteId",
                       "value": "3"
                     }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Company Assignment",
+          "item": [
+            {
+              "name": "Profile Assigned Companies",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile-company-assigned",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "profile-company-assigned"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Export Profile Assigned Companies",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/profile-company-assigned/export",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "accounting",
+                    "profile-company-assigned",
+                    "export"
                   ]
                 }
               },
@@ -6870,7 +7181,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 2,\n            \"value\": 2\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 5,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        }\n    ],\n    \"account_office_type\": \"ryczałt\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1,\n    \"default_profile\":0\n}",
+              "raw": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"branches\": [],\n    \"languages\": [],\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 2\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": \"10\",\n            \"value\": 1\n        }\n    ],\n    \"account_office_type\": \"KPiR\",\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
