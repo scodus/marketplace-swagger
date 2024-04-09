@@ -3780,13 +3780,45 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{url}}/api/admin/company-session-export?company_id=20",
+                  "raw": "{{url}}/api/admin/company-session-export?page=1&limit=50&onboarding_status=&handover_status=&process_status=ready_to_close&payment_status=&created_by=&name=&profile_missing=0",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company-session-export"],
                   "query": [
                     {
-                      "key": "company_id",
-                      "value": "20"
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "onboarding_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "handover_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "process_status",
+                      "value": "ready_to_close"
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": ""
+                    },
+                    {
+                      "key": "created_by",
+                      "value": ""
+                    },
+                    {
+                      "key": "name",
+                      "value": ""
+                    },
+                    {
+                      "key": "profile_missing",
+                      "value": "0"
                     }
                   ]
                 }
@@ -5792,7 +5824,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"fetape7565@royalka.com\",\n    \"password\":\"P@ssw0rd\"\n}",
+                  "raw": "{\n    \"email\":\"wwebipin2009@yahoo.com\",\n    \"password\":\"P@ssw0rd\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6359,7 +6391,83 @@
               "response": []
             },
             {
-              "name": "Create User Copy",
+              "name": "Edit User",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"newuseredit@mail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/user/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "user", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "178"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Change User Status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\":1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/user-status/:id",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "user-status", ":id"],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "178"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Remove user",
               "request": {
                 "auth": {
                   "type": "bearer",
