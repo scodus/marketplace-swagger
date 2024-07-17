@@ -5714,6 +5714,38 @@
           ]
         },
         {
+          "name": "Reports",
+          "item": [
+            {
+              "name": "Onboarding Status Report",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/company-reports?status_type=onboarding_status&from=2024-02-23&to=2024-02-25",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "company-reports"],
+                  "query": [
+                    {
+                      "key": "status_type",
+                      "value": "onboarding_status"
+                    },
+                    {
+                      "key": "from",
+                      "value": "2024-02-23"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2024-02-25"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Dashboard",
           "request": {
             "auth": {
@@ -6375,7 +6407,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"radom.user3@sparkroi.com\",\n    \"role\":\"accountant_leader\"\n}",
+                  "raw": "{\n    \"user_name\":\"abc defs\",\n    \"user_email\":\"radom.user3@sparkroi.com\",\n    \"role\":\"accountant_leader\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6407,7 +6439,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"newuseredit@mail.com\"\n}",
+                  "raw": "{\n    \"user_name\":\"abc\",\n    \"user_email\":\"abc@gmail.com \"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6421,7 +6453,7 @@
                   "variable": [
                     {
                       "key": "id",
-                      "value": "178"
+                      "value": "193"
                     }
                   ]
                 }
