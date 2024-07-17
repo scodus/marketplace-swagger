@@ -14,6 +14,7 @@ info:
 servers:
   - url: http://{{url}}
   - url: https://dane.biznes.gov.pl
+  - url: http://localhost:8000
 components:
   securitySchemes:
     bearerAuth:
@@ -36,6 +37,7 @@ tags:
   - name: Admin Dashboard > Email template
   - name: Admin Dashboard > Consultant Group
   - name: Admin Dashboard > Reports
+  - name: Admin Dashboard > Sms Template
   - name: AO Dashboard
   - name: AO Dashboard > Auth
   - name: AO Dashboard > My office
@@ -44,7 +46,9 @@ tags:
   - name: AO Dashboard > Package
   - name: AO Dashboard > Company
   - name: AO Dashboard > Company Note
+  - name: AO Dashboard > Sms Template Copy
   - name: AO Dashboard > Company Assignment
+  - name: AO Dashboard > Email Template
   - name: Marketplace
   - name: Marketplace > Auth
   - name: Public
@@ -96,7 +100,7 @@ paths:
             schema:
               type: object
               example:
-                email: gibssmeeeeeg77173@cdeter.com
+                email: scodusnp@gmail.com
       responses:
         '200':
           description: Successful response
@@ -162,11 +166,12 @@ paths:
             schema:
               type: object
               example:
-                name: office second
-                email: office_second@mail.com
+                name: office second sso
+                email: vaxosa2751@luravel.com
+                office_type: internal
                 short_name: office
-                tax_id: 12356
-                regon: 13456
+                tax_id: 1235611
+                regon: 1345611
                 bdo: 45677
                 pkd: pkd
                 krs: krs
@@ -174,6 +179,7 @@ paths:
                 is_tax_adviser: 1
                 is_current_review: 0
                 nr_mf: abc
+                country_code: '+67'
                 phone_number: '123412'
                 addresses:
                   country: Nepal
@@ -187,7 +193,7 @@ paths:
                   no_of_premises: pr 4
                   voivodeship: voivo 2
                 user_name: test office
-                user_email: secondOffice@gmail.com
+                user_email: vaxosa2751@luravel.com
       security:
         - bearerAuth: []
       responses:
@@ -381,6 +387,7 @@ paths:
           in: query
           schema:
             type: string
+          example: new
         - name: handover_status
           in: query
           schema:
@@ -397,25 +404,11 @@ paths:
           in: query
           schema:
             type: string
-        - name: name
+        - name: onboarding_status_color
           in: query
           schema:
             type: string
-        - name: profile_missing
-          in: query
-          schema:
-            type: integer
-          example: '0'
-        - name: year
-          in: query
-          schema:
-            type: integer
-          example: '2024'
-        - name: month
-          in: query
-          schema:
-            type: integer
-          example: '02'
+          example: red
       responses:
         '200':
           description: Successful response
@@ -770,24 +763,24 @@ paths:
             schema:
               type: object
               example:
-                profile_slug: katarzyna-kowalska
-                package_slug: rs-kpir
-                company_slug: test-simulation-table-final
+                profile_slug: agata-foka
+                package_slug: komfort-kpir
+                company_slug: dolor-illo-nulla-dol
                 parameter_filters:
                   - parameter_id: 1
                     value: 0
+                  - parameter_id: 2
+                    value: 2
                   - parameter_id: 3
                     value: 3
+                  - parameter_id: 4
+                    value: 0
                   - parameter_id: 9
+                    value: 0
+                  - parameter_id: 10
                     value: 0
                   - parameter_id: 11
                     value: 0
-                  - parameter_id: 2
-                    value: 12
-                  - parameter_id: '10'
-                    value: 1
-                  - parameter_id: 4
-                    value: 20
                 promotion_id: null
       security:
         - bearerAuth: []
@@ -2101,6 +2094,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/users/support-leader/consultant-group:
+    get:
+      tags:
+        - Admin Dashboard > Consultant Group
+      summary: My consultant users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/company-reports:
     get:
       tags:
@@ -2122,6 +2127,58 @@ paths:
           schema:
             type: string
           example: '2024-02-25'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/sms-templates:
+    get:
+      tags:
+        - Admin Dashboard > Sms Template
+      summary: List
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin Dashboard > Sms Template
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: abc
+                body: hello world
+                admin_use: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/send-sms-accountant:
+    post:
+      tags:
+        - Admin Dashboard > Sms Template
+      summary: Send sms accountant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                account_profile_id: 10
+                message: test sms
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -2169,7 +2226,7 @@ paths:
             schema:
               type: object
               example:
-                email: wwebipin2009@yahoo.com
+                email: kakag@mailinator.com
                 password: P@ssw0rd
       responses:
         '200':
@@ -2411,10 +2468,10 @@ paths:
               type: object
               example:
                 accounting_office_id: '4'
-                name: default2
+                name: another
                 surname: profile2
                 title: mr
-                accountant_email: ridem89026@ikuromi.com
+                accountant_email: vaxosa2751@luravel.com
                 phone: '+555432342'
                 experience: describe the experiences
                 city: ktm
@@ -2946,6 +3003,26 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/sms/201/send:
+    post:
+      tags:
+        - AO Dashboard > Company
+      summary: Send sms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                message: ''
+                sms_template_id: 999
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/company-note/{companySlug}:
     get:
       tags:
@@ -3031,6 +3108,45 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/sms-templates:
+    get:
+      tags:
+        - AO Dashboard > Sms Template Copy
+      summary: List
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/sms/{company}/send:
+    post:
+      tags:
+        - AO Dashboard > Sms Template Copy
+      summary: Send sms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                message: hello
+                signature: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: company
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '211'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/profile-company-assigned/export:
     get:
       tags:
@@ -3043,11 +3159,99 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/accounting/email-templates:
+    get:
+      tags:
+        - AO Dashboard > Email Template
+      summary: Get Templates
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/email-template-type:
+    post:
+      tags:
+        - AO Dashboard > Email Template
+      summary: Create Type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: type 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/email-template/{slug}:
+    put:
+      tags:
+        - AO Dashboard > Email Template
+      summary: Create Type Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                body: body 1
+                subject: subject 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: type-1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - AO Dashboard > Email Template
+      summary: Delete Template
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: type-1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/accounting/company-dashboard-data:
     get:
       tags:
         - AO Dashboard
       summary: Dashboard Data
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/accounting/company-onboarding:
+    get:
+      tags:
+        - AO Dashboard
+      summary: Notification company onboarding
       security:
         - bearerAuth: []
       responses:
@@ -3258,6 +3462,22 @@ paths:
           schema:
             type: integer
           example: '9151680204'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/login/cd-sso:
+    get:
+      tags:
+        - default
+      summary: SSO Login
+      parameters:
+        - name: token
+          in: query
+          schema:
+            type: string
+          example: abc
       responses:
         '200':
           description: Successful response

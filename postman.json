@@ -75,7 +75,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"gibssmeeeeeg77173@cdeter.com\"\n}",
+                  "raw": "{\n    \"email\":\"scodusnp@gmail.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -175,7 +175,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"name\":\"office second\",\n    \"email\":\"office_second@mail.com\",\n    \"short_name\":\"office\",\n    \"tax_id\":12356,\n    \"regon\":13456,\n    \"bdo\":45677,\n    \"pkd\":\"pkd\",\n    \"krs\":\"krs\",\n    \"www\":\"www\",\n    \"is_tax_adviser\":1,\n    \"is_current_review\":0,\n    \"nr_mf\":\"abc\",\n    \"phone_number\":\"123412\",\n    \"addresses\":{\n        \"country\":\"Nepal\",\n        \"city\":\"Kathmandu\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"test office\",\n    \"user_email\":\"secondOffice@gmail.com\"\n}",
+                  "raw": "{\n    \"name\":\"office second sso\",\n    \"email\":\"vaxosa2751@luravel.com\",\n    \"office_type\":\"internal\",\n    \"short_name\":\"office\",\n    \"tax_id\":1235611,\n    \"regon\":1345611,\n    \"bdo\":45677,\n    \"pkd\":\"pkd\",\n    \"krs\":\"krs\",\n    \"www\":\"www\",\n    \"is_tax_adviser\":1,\n    \"is_current_review\":0,\n    \"nr_mf\":\"abc\",\n    \"country_code\":\"+67\",\n    \"phone_number\":\"123412\",\n    \"addresses\":{\n        \"country\":\"Nepal\",\n        \"city\":\"Kathmandu\",\n        \"zip\":\"9800\",\n        \"post\":\"p1\",\n        \"street\":\"street 1\",\n        \"district\":\"district 1\",\n        \"county\":\"county 1\",\n        \"house_number\":\"h 123\",\n        \"no_of_premises\":\"pr 4\",\n        \"voivodeship\":\"voivo 2\"\n    },\n    \"user_name\":\"test office\",\n    \"user_email\":\"vaxosa2751@luravel.com\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -2875,7 +2875,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "{{url}}/api/admin/company?page=1&limit=50&onboarding_status=&handover_status=&process_status=&payment_status=&created_by=&name=&profile_missing=0&year=2024&month=02",
+                  "raw": "{{url}}/api/admin/company?page=1&limit=50&onboarding_status=new&handover_status=&process_status=&payment_status=&created_by=&onboarding_status_color=red",
                   "host": ["{{url}}"],
                   "path": ["api", "admin", "company"],
                   "query": [
@@ -2889,7 +2889,7 @@
                     },
                     {
                       "key": "onboarding_status",
-                      "value": ""
+                      "value": "new"
                     },
                     {
                       "key": "handover_status",
@@ -2909,19 +2909,27 @@
                     },
                     {
                       "key": "name",
-                      "value": ""
+                      "value": "Change Name",
+                      "disabled": true
                     },
                     {
                       "key": "profile_missing",
-                      "value": "0"
+                      "value": "0",
+                      "disabled": true
                     },
                     {
                       "key": "year",
-                      "value": "2024"
+                      "value": "2024",
+                      "disabled": true
                     },
                     {
                       "key": "month",
-                      "value": "02"
+                      "value": "02",
+                      "disabled": true
+                    },
+                    {
+                      "key": "onboarding_status_color",
+                      "value": "red"
                     }
                   ]
                 }
@@ -3721,7 +3729,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"profile_slug\": \"katarzyna-kowalska\",\n    \"package_slug\": \"rs-kpir\",\n    \"company_slug\": \"test-simulation-table-final\",\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 12\n        },\n        {\n            \"parameter_id\": \"10\",\n            \"value\": 1\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 20\n        }\n    ],\n    \"promotion_id\": null\n}",
+                  "raw": "{\n    \"profile_slug\": \"agata-foka\",\n    \"package_slug\": \"komfort-kpir\",\n    \"company_slug\": \"dolor-illo-nulla-dol\",\n    \"parameter_filters\": [\n        {\n            \"parameter_id\": 1,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 2,\n            \"value\": 2\n        },\n        {\n            \"parameter_id\": 3,\n            \"value\": 3\n        },\n        {\n            \"parameter_id\": 4,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 9,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 10,\n            \"value\": 0\n        },\n        {\n            \"parameter_id\": 11,\n            \"value\": 0\n        }\n    ],\n    \"promotion_id\": null\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5710,6 +5718,35 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "My consultant users",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/users/support-leader/consultant-group",
+                  "host": ["{{url}}"],
+                  "path": [
+                    "api",
+                    "admin",
+                    "users",
+                    "support-leader",
+                    "consultant-group"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -5739,6 +5776,98 @@
                       "value": "2024-02-25"
                     }
                   ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Sms Template",
+          "item": [
+            {
+              "name": "List",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/admin/sms-templates",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "sms-templates"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"title\":\"abc\",\n    \"body\":\"hello world\",\n    \"admin_use\":1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/sms-templates",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "sms-templates"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Send sms accountant",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{admin_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"account_profile_id\":10,\n    \"message\":\"test sms\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/send-sms-accountant",
+                  "host": ["{{url}}"],
+                  "path": ["api", "admin", "send-sms-accountant"]
                 }
               },
               "response": []
@@ -5856,7 +5985,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"email\":\"wwebipin2009@yahoo.com\",\n    \"password\":\"P@ssw0rd\"\n}",
+                  "raw": "{\n    \"email\":\"kakag@mailinator.com\",\n    \"password\":\"P@ssw0rd\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6089,7 +6218,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"accounting_office_id\": \"4\",\n    \"name\": \"default2\",\n    \"surname\": \"profile2\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"ridem89026@ikuromi.com\",\n    \"phone\": \"+555432342\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"max_occupancy\": 11,\n    \"legal_form\": \"legal_person_company\",\n    \"branches\": [],\n    \"languages\": [],\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"supports_kpir\": 1,\n    \"supports_pk\": 1,\n    \"calculates_payroll\": 1,\n    \"supports_uod\": 1,\n    \"supports_uz\": 1,\n    \"does_foreign_operations\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1,\n    \"active\": 1,\n    \"max_receivable\": 10,\n    \"remote_work\": 1,\n    \"cooperated_with_cd\": \"here\",\n    \"insurance\": 1,\n    \"is_default\": 0\n}",
+                  "raw": "{\n    \"accounting_office_id\": \"4\",\n    \"name\": \"another\",\n    \"surname\": \"profile2\",\n    \"title\": \"mr\",\n    \"accountant_email\": \"vaxosa2751@luravel.com\",\n    \"phone\": \"+555432342\",\n    \"experience\": \"describe the experiences\",\n    \"city\": \"ktm\",\n    \"postal_code\": \"44600\",\n    \"list_branch_supported\": \"abc\",\n    \"is_spzoo\": true,\n    \"is_dg\": false,\n    \"is_foundations\": true,\n    \"is_cooperatives\": false,\n    \"br_mf\": \"abc\",\n    \"is_tax_advisor\": true,\n    \"is_fund_reviewer\": false,\n    \"keywords\": \"abcs\",\n    \"max_occupancy\": 11,\n    \"legal_form\": \"legal_person_company\",\n    \"branches\": [],\n    \"languages\": [],\n    \"business_accounting\": 1,\n    \"supports_ryczałt\": 1,\n    \"supports_kpir\": 1,\n    \"supports_pk\": 1,\n    \"calculates_payroll\": 1,\n    \"supports_uod\": 1,\n    \"supports_uz\": 1,\n    \"does_foreign_operations\": 1,\n    \"free_business_starter\": 1,\n    \"secure_video_encryption\": 1,\n    \"invoicing_program_included_price\": 1,\n    \"online_document_archived_included\": 1,\n    \"active\": 1,\n    \"max_receivable\": 10,\n    \"remote_work\": 1,\n    \"cooperated_with_cd\": \"here\",\n    \"insurance\": 1,\n    \"is_default\": 0\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -6971,6 +7100,38 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "Send sms",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"message\": \"\",\n    \"sms_template_id\": 999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/sms/201/send",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "sms", "201", "send"]
+                }
+              },
+              "response": []
             }
           ]
         },
@@ -7108,6 +7269,72 @@
           ]
         },
         {
+          "name": "Sms Template Copy",
+          "item": [
+            {
+              "name": "List",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/sms-templates",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "sms-templates"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Send sms",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"message\":\"hello\",\n    \"signature\":1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/sms/:company/send",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "sms", ":company", "send"],
+                  "variable": [
+                    {
+                      "key": "company",
+                      "value": "211"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Company Assignment",
           "item": [
             {
@@ -7164,6 +7391,133 @@
           ]
         },
         {
+          "name": "Email Template",
+          "item": [
+            {
+              "name": "Get Templates",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/email-templates",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "email-templates"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Type",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\":\"type 1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/email-template-type",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "email-template-type"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Type Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"body\":\"body 1\",\n    \"subject\":\"subject 1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/accounting/email-template/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "email-template", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "type-1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Template",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{account_token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/accounting/email-template/:slug",
+                  "host": ["{{url}}"],
+                  "path": ["api", "accounting", "email-template", ":slug"],
+                  "variable": [
+                    {
+                      "key": "slug",
+                      "value": "type-1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Dashboard Data",
           "request": {
             "auth": {
@@ -7182,6 +7536,29 @@
               "raw": "{{url}}/api/accounting/company-dashboard-data",
               "host": ["{{url}}"],
               "path": ["api", "accounting", "company-dashboard-data"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Notification company onboarding",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{account_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/accounting/company-onboarding",
+              "host": ["{{url}}"],
+              "path": ["api", "accounting", "company-onboarding"]
             }
           },
           "response": []
@@ -7613,6 +7990,27 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "SSO Login",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/v1/login/cd-sso?token=abc",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "v1", "login", "cd-sso"],
+          "query": [
+            {
+              "key": "token",
+              "value": "abc"
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
